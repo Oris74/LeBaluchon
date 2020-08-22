@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		343846E71EE8FB05B346CBFF /* Pods_LeBaluchon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0CE58BC97E54C9974BBA7F /* Pods_LeBaluchon.framework */; };
 		C675FCE46FB116AAD4202E73 /* Pods_LeBaluchonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C5480E91ABBBE6581A0EC1 /* Pods_LeBaluchonTests.framework */; };
+		D9110BFE24F161B4001FE28B /* Rates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9110BFB24F161B3001FE28B /* Rates.swift */; };
+		D9110BFF24F161B4001FE28B /* ExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9110BFC24F161B4001FE28B /* ExchangeRates.swift */; };
+		D9110C0024F161B4001FE28B /* ExchangeRatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9110BFD24F161B4001FE28B /* ExchangeRatesService.swift */; };
+		D9110C0224F161E3001FE28B /* ExchangeRatesSericeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9110C0124F161E3001FE28B /* ExchangeRatesSericeTestCase.swift */; };
+		D9110C0624F1634D001FE28B /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9110C0524F1634D001FE28B /* ExchangeRateViewController.swift */; };
+		D9110C0824F16435001FE28B /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9110C0724F16435001FE28B /* URLSessionFake.swift */; };
+		D9110C0A24F1646E001FE28B /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9110C0924F1646E001FE28B /* FakeResponseData.swift */; };
 		D915D38324EAD725004F251C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915D38224EAD725004F251C /* AppDelegate.swift */; };
 		D915D38524EAD725004F251C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915D38424EAD725004F251C /* SceneDelegate.swift */; };
 		D915D38A24EAD725004F251C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D915D38824EAD725004F251C /* Main.storyboard */; };
@@ -35,6 +42,13 @@
 		7F7ADBC0A0D4FBBAD95AACF2 /* Pods-LeBaluchon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeBaluchon.debug.xcconfig"; path = "Target Support Files/Pods-LeBaluchon/Pods-LeBaluchon.debug.xcconfig"; sourceTree = "<group>"; };
 		ADADC8464D2F84E32B135FB6 /* Pods-LeBaluchonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeBaluchonTests.release.xcconfig"; path = "Target Support Files/Pods-LeBaluchonTests/Pods-LeBaluchonTests.release.xcconfig"; sourceTree = "<group>"; };
 		C45CF3E6A0162E161A1CF02B /* Pods-LeBaluchonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeBaluchonTests.debug.xcconfig"; path = "Target Support Files/Pods-LeBaluchonTests/Pods-LeBaluchonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D9110BFB24F161B3001FE28B /* Rates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rates.swift; sourceTree = "<group>"; };
+		D9110BFC24F161B4001FE28B /* ExchangeRates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRates.swift; sourceTree = "<group>"; };
+		D9110BFD24F161B4001FE28B /* ExchangeRatesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRatesService.swift; sourceTree = "<group>"; };
+		D9110C0124F161E3001FE28B /* ExchangeRatesSericeTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRatesSericeTestCase.swift; sourceTree = "<group>"; };
+		D9110C0524F1634D001FE28B /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewController.swift; sourceTree = "<group>"; };
+		D9110C0724F16435001FE28B /* URLSessionFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
+		D9110C0924F1646E001FE28B /* FakeResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		D915D37F24EAD725004F251C /* LeBaluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeBaluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D915D38224EAD725004F251C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D915D38424EAD725004F251C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +118,8 @@
 		D915D39824EAD726004F251C /* LeBaluchonTests */ = {
 			isa = PBXGroup;
 			children = (
+				D9110C0924F1646E001FE28B /* FakeResponseData.swift */,
+				D9110C0724F16435001FE28B /* URLSessionFake.swift */,
 				D933B57724EE72540088B13F /* WeatherTests */,
 				D933B57624EE723D0088B13F /* TranslateTests */,
 				D933B57524ED97E20088B13F /* ExchangeRatesTests */,
@@ -125,6 +141,7 @@
 		D915D3A524EAD765004F251C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D9110C0524F1634D001FE28B /* ExchangeRateViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -159,6 +176,9 @@
 		D933B56624EC41680088B13F /* ExchangeRates */ = {
 			isa = PBXGroup;
 			children = (
+				D9110BFC24F161B4001FE28B /* ExchangeRates.swift */,
+				D9110BFB24F161B3001FE28B /* Rates.swift */,
+				D9110BFD24F161B4001FE28B /* ExchangeRatesService.swift */,
 			);
 			name = ExchangeRates;
 			sourceTree = "<group>";
@@ -174,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				D933B55524EBBDA60088B13F /* Fixer.json */,
+				D9110C0124F161E3001FE28B /* ExchangeRatesSericeTestCase.swift */,
 			);
 			name = ExchangeRatesTests;
 			sourceTree = "<group>";
@@ -270,6 +291,7 @@
 					};
 					D915D39424EAD726004F251C = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 						TestTargetID = D915D37E24EAD725004F251C;
 					};
 				};
@@ -385,7 +407,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9110C0624F1634D001FE28B /* ExchangeRateViewController.swift in Sources */,
+				D9110BFF24F161B4001FE28B /* ExchangeRates.swift in Sources */,
+				D9110C0024F161B4001FE28B /* ExchangeRatesService.swift in Sources */,
 				D915D38324EAD725004F251C /* AppDelegate.swift in Sources */,
+				D9110BFE24F161B4001FE28B /* Rates.swift in Sources */,
 				D915D38524EAD725004F251C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +420,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9110C0224F161E3001FE28B /* ExchangeRatesSericeTestCase.swift in Sources */,
+				D9110C0824F16435001FE28B /* URLSessionFake.swift in Sources */,
+				D9110C0A24F1646E001FE28B /* FakeResponseData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +615,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24V626T3JX;
 				INFOPLIST_FILE = LeBaluchonTests/Info.plist;
@@ -597,6 +627,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = FR.DIGIT74.LeBaluchonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeBaluchon.app/LeBaluchon";
@@ -609,6 +640,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24V626T3JX;
 				INFOPLIST_FILE = LeBaluchonTests/Info.plist;

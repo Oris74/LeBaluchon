@@ -50,4 +50,3 @@ class URLSessionDataTaskFake: URLSessionDataTask {
 
     override func cancel() {}
 }
-

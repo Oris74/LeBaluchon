@@ -21,5 +21,3 @@ struct ExchangeRates: Codable {
         return rate * amount
     }
 }
-
-

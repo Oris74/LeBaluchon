@@ -204,6 +204,9 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="conversionButtonTapped:" destination="R1j-Qh-q8Y" eventType="touchUpInside" id="uwz-7p-6ON"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -242,6 +245,12 @@
                         <viewLayoutGuide key="safeArea" id="4Lu-q0-EXz"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Taux de Change" image="dollarsign.circle.fill" catalog="system" largeContentSizeImage="dollarsign.circle.fill" id="yaD-Kh-qcl" userLabel="ExchangeRateButton"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="4hg-8S-1V1" id="nMl-0e-twM"/>
+                        <outlet property="convertedAmount" destination="CLE-aN-c2L" id="XxJ-db-hUP"/>
+                        <outlet property="currentAmount" destination="hRa-dv-BcT" id="aBD-Td-3ib"/>
+                        <outlet property="currentRate" destination="1aP-U6-zEt" id="U8z-oT-yhQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIE-sf-zqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

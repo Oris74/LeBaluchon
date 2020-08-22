@@ -13,21 +13,21 @@ class FakeResponseData {
     static var exchangeRatesCorrectData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
         let url = bundle.url(forResource: "Fixer", withExtension: "json")!
-        return try! Data(contentsOf: url)
+        return try? Data(contentsOf: url)
     }
 
     static var translationCorrectData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
         let url = bundle.url(forResource: "GoogleTranslate", withExtension: "json")!
-        return try! Data(contentsOf: url)
+        return try? Data(contentsOf: url)
     }
-    
+
     static var weatherCorrectData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
         let url = bundle.url(forResource: "OpenWeathermap", withExtension: "json")!
-        return try! Data(contentsOf: url)
+        return try? Data(contentsOf: url)
     }
-    
+
     static let incorrectData = "erreur".data(using: .utf8)!
 
     static let imageData = "image".data(using: .utf8)!
@@ -41,10 +41,7 @@ class FakeResponseData {
         url: URL(string: "http://openclassrooms.com")!,
         statusCode: 500, httpVersion: nil, headerFields: [:])!
 
-
     // MARK: - Error
     class ErrorClass: Error {}
     static let error = ErrorClass()
 }
-
-
