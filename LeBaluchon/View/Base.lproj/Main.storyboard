@@ -15,12 +15,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veuillez saisir la  phrase à traduire" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyT-3Y-idy">
-                                <rect key="frame" x="77" y="25" width="260" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veuillez saisir votre  phrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyT-3Y-idy">
+                                <rect key="frame" x="28" y="25" width="358" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="YWv-n4-k08"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -63,6 +63,9 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="translationButtonTapped:" destination="6ZC-ym-NhG" eventType="touchUpInside" id="6Sv-7L-lEv"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEz-tx-4l4" userLabel="switchLanguage">
                                                 <rect key="frame" x="354" y="0.0" width="20" height="50"/>
@@ -72,6 +75,9 @@
                                                 </constraints>
                                                 <color key="tintColor" red="0.99990516900000004" green="1" blue="0.99987047910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="arrow.up.and.down" catalog="system"/>
+                                                <connections>
+                                                    <action selector="switchLanguageButtonTapped:" destination="6ZC-ym-NhG" eventType="touchUpInside" id="gA8-nv-n6H"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -121,6 +127,13 @@
                         <viewLayoutGuide key="safeArea" id="PXk-7i-wbb"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Traduction" image="bubble.left.and.bubble.right" catalog="system" id="7YP-j4-6j5"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Gzo-u8-ct2" id="kRX-dz-a7h"/>
+                        <outlet property="sourceFlag" destination="nu8-dA-DNx" id="xXY-VB-6FQ"/>
+                        <outlet property="sourceText" destination="gMQ-HP-pYs" id="3F3-dM-8Zd"/>
+                        <outlet property="targetFlag" destination="BpK-vf-UPl" id="PTc-hi-W1d"/>
+                        <outlet property="targetText" destination="CPy-Fk-kdB" id="1V3-Jl-WR4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Z2-pe-uSj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,6 +155,9 @@
                                 <rect key="frame" x="107" y="70" width="200" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="currentAmount:" destination="QEp-f6-86e" eventType="editingDidEnd" id="05J-nG-WEC"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yO5-A0-jES">
                                 <rect key="frame" x="317" y="70" width="70.666666666666686" height="50"/>
@@ -159,11 +175,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Montant" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRw-ha-QJI">
-                                <rect key="frame" x="154.33333333333334" y="25" width="105.66666666666666" height="25"/>
+                                <rect key="frame" x="136.66666666666666" y="25" width="140.99999999999997" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="fUR-0s-m55"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -206,6 +222,7 @@
                                 </state>
                                 <connections>
                                     <action selector="conversionButtonTapped:" destination="R1j-Qh-q8Y" eventType="touchUpInside" id="uwz-7p-6ON"/>
+                                    <action selector="translationButton:" destination="QEp-f6-86e" eventType="touchUpInside" id="rFx-oc-f58"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -253,6 +270,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIE-sf-zqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="QEp-f6-86e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-136.875" y="-1211.6197183098591"/>
         </scene>
@@ -278,7 +296,7 @@
         <!--Weather-->
         <scene sceneID="6iN-K7-8vB">
             <objects>
-                <viewController id="DN3-b6-md9" userLabel="Weather" customClass="WeatherViewController" customModule="LeBaluchon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DN3-b6-md9" userLabel="Weather" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="olF-jD-FhO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
