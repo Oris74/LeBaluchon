@@ -73,5 +73,7 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs to get your local coordinate. please allow to get it !</string>
 </dict>
 </plist>

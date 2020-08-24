@@ -7,32 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "07BDE360-3497-4724-A065-00C05C16F851"
-            shouldBeEnabled = "No"
+            uuid = "24BF5C7B-CC5C-4F40-8E52-A049D5E55AFF"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LeBaluchonTests/TranslationServiceTestCase.swift"
+            filePath = "LeBaluchon/Controller/WeatherViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "testGetTranslationShouldPostSuccessCallbackIfNoErrorAndCorrectData()"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "buttonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "32F2BA86-B52D-46EA-97D8-B1B39CE2F9C9"
-            shouldBeEnabled = "No"
+            uuid = "F899DAB0-3FAE-43CF-8F66-321931458FFD"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LeBaluchon/Controller/TranslationViewController.swift"
+            filePath = "LeBaluchon/Controller/WeatherViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "switchLanguage()"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -296,24 +296,116 @@
         <!--Weather-->
         <scene sceneID="6iN-K7-8vB">
             <objects>
-                <viewController id="DN3-b6-md9" userLabel="Weather" sceneMemberID="viewController">
+                <viewController id="DN3-b6-md9" userLabel="Weather" customClass="WeatherViewController" customModule="LeBaluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="olF-jD-FhO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEG-Fa-vY4">
-                                <rect key="frame" x="80" y="108" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RPz-Vw-PXS">
+                                <rect key="frame" x="20" y="20" width="374" height="551"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3GQ-lP-XPq" userLabel="vacationPlaceStackView">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="270.66666666666669"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRt-tE-XiF" userLabel="vacationPlaceLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="lgd-1f-sBg"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XEZ-l4-LhN" userLabel="vacationLocationStackView">
+                                                <rect key="frame" x="0.0" y="69.999999999999986" width="374" height="200.66666666666663"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rEG-Fa-vY4" userLabel="weatherPictoVacationPlace">
+                                                        <rect key="frame" x="0.0" y="0.0" width="183" height="200.66666666666666"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dFX-45-0DX" userLabel="temperatureVacationPlace">
+                                                        <rect key="frame" x="191" y="0.0" width="183" height="200.66666666666666"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="dFX-45-0DX" firstAttribute="height" secondItem="rEG-Fa-vY4" secondAttribute="height" id="AQr-e2-F0N"/>
+                                                    <constraint firstItem="dFX-45-0DX" firstAttribute="width" secondItem="rEG-Fa-vY4" secondAttribute="width" id="cCr-8P-Ezb"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K0A-Xs-pXU" userLabel="currentPlaceLabel">
+                                        <rect key="frame" x="0.0" y="280.66666666666674" width="374" height="270.33333333333326"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5F-Ju-Y0h" userLabel="CurrentLocationLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="OQU-ae-yne"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ayx-fB-w0Z" userLabel="currentLocationStackView">
+                                                <rect key="frame" x="0.0" y="60.000000000000014" width="374" height="210.33333333333337"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UBc-dg-zMD" userLabel="weatherPictoCurrentLocation">
+                                                        <rect key="frame" x="0.0" y="0.0" width="183" height="210.33333333333334"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Kw-NV-U0U" userLabel="temperatureCurrentLocation">
+                                                        <rect key="frame" x="191" y="0.0" width="183" height="210.33333333333334"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="2Kw-NV-U0U" firstAttribute="width" secondItem="UBc-dg-zMD" secondAttribute="width" id="64T-gD-MYq"/>
+                                                    <constraint firstItem="2Kw-NV-U0U" firstAttribute="height" secondItem="UBc-dg-zMD" secondAttribute="height" id="wZB-g2-Ne2"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5vk-Nh-1x1">
+                                <rect key="frame" x="188.66666666666666" y="591" width="37" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="98v-vN-Ktz"/>
+                                    <constraint firstAttribute="width" constant="37" id="wtP-gh-5zT"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPD-Wy-PVa">
+                                <rect key="frame" x="184" y="637" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="DN3-b6-md9" eventType="touchUpInside" id="5el-pJ-XD5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lnJ-az-9KG" firstAttribute="trailing" secondItem="RPz-Vw-PXS" secondAttribute="trailing" constant="20" id="3Y6-02-mRn"/>
+                            <constraint firstItem="5vk-Nh-1x1" firstAttribute="top" secondItem="RPz-Vw-PXS" secondAttribute="bottom" constant="20" id="Ica-wT-aRM"/>
+                            <constraint firstItem="RPz-Vw-PXS" firstAttribute="top" secondItem="lnJ-az-9KG" secondAttribute="top" constant="20" id="P6U-g5-n0M"/>
+                            <constraint firstItem="lPD-Wy-PVa" firstAttribute="centerX" secondItem="olF-jD-FhO" secondAttribute="centerX" id="Z6w-Mj-5Rp"/>
+                            <constraint firstItem="5vk-Nh-1x1" firstAttribute="centerX" secondItem="olF-jD-FhO" secondAttribute="centerX" id="cfB-Hh-kZb"/>
+                            <constraint firstItem="lnJ-az-9KG" firstAttribute="bottom" secondItem="lPD-Wy-PVa" secondAttribute="bottom" constant="20" id="j4g-Uj-DU9"/>
+                            <constraint firstItem="lnJ-az-9KG" firstAttribute="bottom" secondItem="5vk-Nh-1x1" secondAttribute="bottom" constant="50" id="pja-v1-QH9"/>
+                            <constraint firstItem="RPz-Vw-PXS" firstAttribute="leading" secondItem="lnJ-az-9KG" secondAttribute="leading" constant="20" id="vxG-F6-Y2v"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lnJ-az-9KG"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Météo" image="sun.max.fill" catalog="system" id="WBP-EY-0pf"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="5vk-Nh-1x1" id="3pB-xc-H9V"/>
+                        <outlet property="currentLocationLabel" destination="I5F-Ju-Y0h" id="AQ1-T8-Wb7"/>
+                        <outlet property="temperatureCurrentLocation" destination="2Kw-NV-U0U" id="FBV-2g-IZA"/>
+                        <outlet property="temperatureVacationPlace" destination="dFX-45-0DX" id="xCg-sU-tnQ"/>
+                        <outlet property="vacationPlaceLabel" destination="MRt-tE-XiF" id="grA-zi-vJm"/>
+                        <outlet property="weatherCurrentLocation" destination="UBc-dg-zMD" id="KWn-LP-ntm"/>
+                        <outlet property="weatherVacationPlacePicto" destination="rEG-Fa-vY4" id="wzv-kb-78e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gV-ri-wjg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="383"/>
+            <point key="canvasLocation" x="134.78260869565219" y="382.33695652173918"/>
         </scene>
     </scenes>
     <resources>

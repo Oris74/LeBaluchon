@@ -14,6 +14,7 @@ class TranslationViewController: UIViewController {
     @IBOutlet weak var sourceFlag: UIImageView!
     @IBOutlet weak var targetFlag: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     var sourceLanguage: String
     var targetLanguage: String
     var switchText: Bool

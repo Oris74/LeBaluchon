@@ -1,5 +1,5 @@
 //
-//  Coord.swift
+//  Location.swift
 //  LeBaluchon
 //
 //  Created by Laurent Debeaujon on 23/08/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Coord
-struct Coord: Codable {
-    var lon, lat: Double
+struct Location {
+    var town:String
+    var country:String
 }
