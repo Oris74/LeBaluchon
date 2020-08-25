@@ -14,49 +14,49 @@ class TranslationViewController: UIViewController {
     @IBOutlet weak var sourceFlag: UIImageView!
     @IBOutlet weak var targetFlag: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
+    
     var sourceLanguage: String
     var targetLanguage: String
     var switchText: Bool
-
+    
     @IBAction func translationButtonTapped(_ sender: Any) {
         translation()
     }
-
+    
     @IBAction func switchLanguageButtonTapped(_ sender: Any) {
         switchLanguage()
     }
-
+    
     required init?(coder: NSCoder) {
         self.sourceLanguage = "fr"
         self.targetLanguage = "en"
         switchText = false
         super.init(coder: coder)
-
+        
     }
-
+    
     func translation() {
         toggleActivityIndicator(shown: true)
-
+        
         TranslationService.shared.getTranslation(
             text: sourceText.text, source: sourceLanguage, target: targetLanguage, callback: { (success, translation) in
                 if success, let translation = translation {
                     self.update(translate: translation)
-
+                    
                 } else {
                     self.toggleActivityIndicator(shown: false)
                     self.presentAlert(message: "récupération des données impossible")
                 }
         })
     }
-
+    
     func switchLanguage() {
         switchText = !switchText
-
+        
         let clipboardText = sourceText.text
         sourceText.text = targetText.text
         targetText.text = clipboardText
-
+        
         switch switchText {
         case true:
             sourceFlag.image = UIImage(named: "UKFlag.png")
@@ -70,16 +70,16 @@ class TranslationViewController: UIViewController {
             targetLanguage = "en"
         }
     }
-
+    
     private func update(translate: Translate) {
         targetText.text = translate.data.translations[0].translatedText
         self.toggleActivityIndicator(shown: false)
-       }
-
+    }
+    
     private func toggleActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
     }
-
+    
     func presentAlert(message: String) {
         let alert = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)

@@ -9,90 +9,103 @@
 import UIKit
 import CoreLocation
 
-class WeatherViewController: UIViewController, CLLocationManagerDelegate {
+class WeatherViewController: UIViewController {
 
-    var locationManager: CLLocationManager = CLLocationManager()
-    var currentPlace: Coord
+    var locationManager = CLLocationManager()
+    var currentPlace: Location
     let vacationPlace: Location
-   
-    @IBOutlet weak var vacationPlaceLabel: UILabel!
-
-    @IBOutlet weak var weatherVacationPlacePicto: UIImageView!
-
-    @IBOutlet weak var temperatureVacationPlace: UIImageView!
-
-    @IBOutlet weak var currentLocationLabel: UILabel!
-
-    @IBOutlet weak var weatherCurrentLocation: UIImageView!
-
-    @IBOutlet weak var temperatureCurrentLocation: UIImageView!
-
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var vacationPlaceLabel: UILabel!
+    @IBOutlet weak var weatherVacationPlacePicto: UIImageView!
+    @IBOutlet weak var temperatureVacationPlace: UIImageView!
+    @IBOutlet weak var localPlaceLabel: UILabel!
+    @IBOutlet weak var localWeatherPlacePicto: UIImageView!
+    @IBOutlet weak var temperatureLocalPlace: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
+    @IBOutlet weak var localCoordinate: UILabel!
+    @IBOutlet weak var vacationCoordinateLocation: UILabel!
+
     required init?(coder: NSCoder) {
-               
-        self.currentPlace = Coord(lon: 0.0, lat: 0.0)
-        self.vacationPlace = Location(town: "New York", country: "us")
-                
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        
+        //self.currentPlace = .coord
+        self.vacationPlace = .town("New York", "us")
         super.init(coder: coder)
+
     }
+    
     override func viewDidLoad() {
         toggleActivityIndicator(shown: false)
-       
+        checkLocationServices()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-       
-    }
-
-    @IBAction func buttonTapped(_ sender: Any) {
-        getWeather(place: vacationPlace)
-        getWeather(place: currentPlace )
-    }
-
-    func getWeather(place: Location ) {
-        toggleActivityIndicator(shown: false)
-        let weatherService = WeatherService(
-               location: place )
-        weatherService.getWeather { (success, weather) in
-            if success, let weather = weather {
-                self.update(weather: weather)
-            } else {
-                self.toggleActivityIndicator(shown: false)
-                self.presentAlert(message: "récupération des données impossible")
-            }
+        locationManager.startUpdatingLocation()
+        if let location = locationManager.location?.coordinate {
+            currentPlace = .coord(Coord(lon:location.longitude, lat:location.latitude))
         }
     }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let firstCoordinate = locations.first else { return }
-        currentPlace.lat = firstCoordinate.coordinate.latitude
-        currentPlace.lon = firstCoordinate.coordinate.longitude
-        
+    
+    @IBAction func buttonTapped(_ sender: Any) {
+        weather(place: vacationPlace, completionHandler: { weather in
+            self.updateVacationPlace(weather: weather)
+        })
+        weather(place: currentPlace, completionHandler: { weather in
+            do {
+                try self.updateCurrentPlace(weather: weather)
+            } catch let error as WeatherViewController.NetworkError {
+                presentAlert(message: error)
+            }
+        }) 
     }
 
-    private func update(weather: OpenWeather) {
+    func weather(place: Location, completionHandler: @escaping (OpenWeather) -> Void) {
+        WeatherService.shared.getWeather(place: place, callback: {(success, weather) in
+            if success, let weather = weather {
+                completionHandler(weather)
+            } else {
+                self.presentAlert(message: "récupération des données impossible")
+            }
+            self.toggleActivityIndicator(shown: false)
+        })
+    }
 
-        currentLocationLabel.text = weather.name
+    private func updateVacationPlace(weather: OpenWeather) {
+        let pictoCode = weather.weather[0].icon
+        let urlPicto = URL(string: "http://openweathermap.org/img/wn/"+pictoCode+"@2x.png")
+        
+        vacationPlaceLabel.text = weather.name
+        vacationCoordinateLocation.text = "Longitude: \(weather.coord.lon) / Latitude: \(weather.coord.lat)"
+        
+        weatherVacationPlacePicto.load(url: urlPicto! )
+        temperatureVacationPlace.image = UIImage(named: "temperate.png")
+    }
 
-        self.toggleActivityIndicator(shown: false)
-      }
+    private func updateCurrentPlace(weather: OpenWeather) throws {
+        localPlaceLabel.text = weather.name
+        guard case .coord(let coord) = currentPlace else {
+            localCoordinate.text = "Longitude: ? / Latitude: ?"
+            throw NetworkError.coordinateMissing
+        }
+        
+        localCoordinate.text = "Longitude: \(coord.lon) / Latitude: \(coord.lat)"
+        
+        let pictoCode = weather.weather[0].icon
+        let urlPicto = URL(string: "http://openweathermap.org/img/wn/"+pictoCode+"@2x.png")
+        localWeatherPlacePicto.load(url: urlPicto! )
+        
+        temperatureLocalPlace.image = UIImage(named: "temperate.png")
+    }
 
-      private func toggleActivityIndicator(shown: Bool) {
-          activityIndicator.isHidden = !shown
-      }
+    private func toggleActivityIndicator(shown: Bool) {
+        activityIndicator.isHidden = !shown
+    }
 
-      func presentAlert(message: String) {
-          let alert = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
-          let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-          alert.addAction(action)
-          present(alert, animated: true, completion: nil)
-      }
+    func presentAlert(message: String) {
+        let alert = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension UIImageView {
@@ -106,5 +119,44 @@ extension UIImageView {
                 }
             }
         }
+    }
+}
+
+extension WeatherViewController: CLLocationManagerDelegate {
+    func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            setupLocationManager()
+            checkLocationAuthorization()
+        } else {
+            presentAlert(message: "Géolocalisation Impossible")
+        }
+    }
+    
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+           break
+        case .denied:
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .authorizedAlways:
+            break
+        case .restricted:
+            break
+        @unknown default:
+            break
+        }
+    }
+    enum NetworkError: Error {
+        case coordinateMissing
+        case orderIsEmpty
+        case invalidPaymentMethod
+        case insufficientFundings
     }
 }

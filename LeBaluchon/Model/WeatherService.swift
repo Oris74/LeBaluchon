@@ -9,90 +9,67 @@
 import Foundation
 
 class WeatherService {
-
     static let shared = WeatherService()
     private init() {}
-
-    private var task: URLSessionDataTask?
-
-    private var weatherSession = URLSession(configuration: .default)
-
-    private var location: Location?
-    private var request: URLRequest?
-
-    init(location: Location, session: URLSession? = nil) {
-        if let sessionLocation = session {
-            self.weatherSession = sessionLocation
-        }
-        let request = self.createWeatherRequest(location: location)
-        self.request = request
-    }
-
-    init(coord: Coord, session: URLSession? = nil) {
-        if let sessionCoord = session {
-            self.weatherSession = sessionCoord
-        }
-        let request = createWeatherRequest(coordinate: coord)
-        self.request = request
-    }
     
-    private  let openWeathermapUrl = URL(string: "api.openweathermap.org/data/2.5/weather?")!
-
-    func getWeather( callback: @escaping (Bool, OpenWeather?) -> Void) {
-        task?.cancel()
-        task = weatherSession.dataTask(with: self.request!) { (data, response, error) in
+    private var task: URLSessionDataTask?
+    private var weatherSession = URLSession(configuration: .default)
+    init(session: URLSession) {
+        self.weatherSession = session
+    }
+    private let openWeathermapUrl = URL(string: "http://api.openweathermap.org/data/2.5/weather")!
+    
+    func getWeather(place: Location, callback: @escaping (Bool, OpenWeather?) -> Void) {
+        let request = createWeatherRequest(location: place)
+        //task.cancel()
+        task = weatherSession.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)
                     return
                 }
-
+                print("data: \(data)")
+                print("error: \(data)")
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     callback(false, nil)
                     return
                 }
-
-                guard let weather = try? JSONDecoder().decode(OpenWeather.self, from: data) else {
-                    callback(false, nil)
-                    return
+                print("response: \(response)")
+                do {
+                    guard let weather = try JSONDecoder().decode(OpenWeather?.self, from: data) else {
+                        callback(false, nil)
+                        return
+                    }
+                    callback(true, weather)
+                } catch let error {
+                    if let decodingError = error as? DecodingError {
+                        print("Error coverting: ", decodingError)
+                    }
                 }
-
-                callback(true, weather)
             }
         }
         task?.resume()
     }
-
+    
     private func createWeatherRequest(location: Location) -> URLRequest {
         var components = URLComponents(url: openWeathermapUrl, resolvingAgainstBaseURL: false)!
-
-        components.queryItems = [
-            URLQueryItem(name: "appid", value: "bb40a38a8c8520cc06a6df6efe45cef1"),
-            URLQueryItem(name: "q", value: location.town + "," + location.country )
-        ]
-
-        let query = components.url!.query
-
-        var request = URLRequest(url: openWeathermapUrl)
+        var queryItems = [URLQueryItem]()
+       
+        switch location {
+        case .coord(let coordinatePlace):
+            queryItems.append(URLQueryItem(name: "lat", value: String(coordinatePlace.lat)))
+            queryItems.append(URLQueryItem(name: "lon", value: String(coordinatePlace.lon)))
+        case .town( let townName, let countryName):
+            queryItems.append(URLQueryItem(name: "q", value: "\(townName),\(countryName)"))
+        }
+       
+        queryItems.append(URLQueryItem(name: "appid", value: "bb40a38a8c8520cc06a6df6efe45cef1"))
+        queryItems.append(URLQueryItem(name: "lang", value: "fr"))
+        queryItems = queryItems.filter { !$0.name.isEmpty }
+        components.queryItems = queryItems
+        print(components.url!)
+        var request = URLRequest(url: components.url!)
         request.httpMethod = "GET"
-        request.httpBody = query!.data(using: .utf8)
-        return request
-    }
-
-    private func createWeatherRequest(coordinate: Coord) -> URLRequest {
-        var components = URLComponents(url: openWeathermapUrl, resolvingAgainstBaseURL: false)!
-
-        components.queryItems = [
-            URLQueryItem(name: "lon", value: String(coordinate.lon)),
-            URLQueryItem(name: "lat", value: String(coordinate.lat)),
-            URLQueryItem(name: "appid", value: "bb40a38a8c8520cc06a6df6efe45cef1")
-        ]
-
-        let query = components.url!.query
-
-        var request = URLRequest(url: openWeathermapUrl)
-        request.httpMethod = "GET"
-        request.httpBody = query!.data(using: .utf8)
         return request
     }
 }

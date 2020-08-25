@@ -165,6 +165,7 @@
 		D915D3A424EAD75C004F251C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D99E646724F568B400262E94 /* Utilities */,
 				D933B56624EC41680088B13F /* ExchangeRates */,
 				D933B56824EC41BA0088B13F /* Translation */,
 				D933B56524EC414B0088B13F /* Weather */,
@@ -205,14 +206,7 @@
 		D933B56524EC414B0088B13F /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				D93E250424F26B42006A3884 /* OpenWeather.swift */,
-				D93E250A24F27007006A3884 /* WeatherElement.swift */,
-				D93E250C24F27016006A3884 /* Sys.swift */,
-				D93E250624F26B61006A3884 /* Wind.swift */,
-				D93E250E24F27028006A3884 /* Main.swift */,
-				D93E251024F2703E006A3884 /* Coord.swift */,
-				D93E251224F27055006A3884 /* Clouds.swift */,
-				D93E251424F30267006A3884 /* Location.swift */,
+				D99E646924F56C1E00262E94 /* OpenWeatherDataStruct */,
 				D93E250024F18FFE006A3884 /* WeatherService.swift */,
 			);
 			name = Weather;
@@ -231,9 +225,7 @@
 		D933B56824EC41BA0088B13F /* Translation */ = {
 			isa = PBXGroup;
 			children = (
-				D99E646324F3F55400262E94 /* Translate.swift */,
-				D9110C0F24F16BA0001FE28B /* DataStruct.swift */,
-				D9110C1324F16BAF001FE28B /* Translation.swift */,
+				D99E646824F56B0700262E94 /* GoogleTranslateDataStruct */,
 				D9110C1724F16C05001FE28B /* TranslationService.swift */,
 			);
 			name = Translation;
@@ -264,6 +256,38 @@
 				D933B55924EBBE910088B13F /* OpenWeathermap.json */,
 			);
 			name = WeatherTests;
+			sourceTree = "<group>";
+		};
+		D99E646724F568B400262E94 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D99E646824F56B0700262E94 /* GoogleTranslateDataStruct */ = {
+			isa = PBXGroup;
+			children = (
+				D99E646324F3F55400262E94 /* Translate.swift */,
+				D9110C0F24F16BA0001FE28B /* DataStruct.swift */,
+				D9110C1324F16BAF001FE28B /* Translation.swift */,
+			);
+			name = GoogleTranslateDataStruct;
+			sourceTree = "<group>";
+		};
+		D99E646924F56C1E00262E94 /* OpenWeatherDataStruct */ = {
+			isa = PBXGroup;
+			children = (
+				D93E250424F26B42006A3884 /* OpenWeather.swift */,
+				D93E250A24F27007006A3884 /* WeatherElement.swift */,
+				D93E250C24F27016006A3884 /* Sys.swift */,
+				D93E250624F26B61006A3884 /* Wind.swift */,
+				D93E250E24F27028006A3884 /* Main.swift */,
+				D93E251024F2703E006A3884 /* Coord.swift */,
+				D93E251224F27055006A3884 /* Clouds.swift */,
+				D93E251424F30267006A3884 /* Location.swift */,
+			);
+			name = OpenWeatherDataStruct;
 			sourceTree = "<group>";
 		};
 		ED97A9CC7E06E6B90225926C /* Pods */ = {

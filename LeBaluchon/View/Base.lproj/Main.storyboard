@@ -304,10 +304,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RPz-Vw-PXS">
                                 <rect key="frame" x="20" y="20" width="374" height="551"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3GQ-lP-XPq" userLabel="vacationPlaceStackView">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3GQ-lP-XPq" userLabel="vacationPlaceStackView">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="270.66666666666669"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRt-tE-XiF" userLabel="vacationPlaceLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lieu de vacance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRt-tE-XiF" userLabel="vacationPlaceLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="lgd-1f-sBg"/>
@@ -316,14 +316,32 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordonnées" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYJ-PD-O3l" userLabel="coordinateVacationLocation">
+                                                <rect key="frame" x="0.0" y="50" width="374" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="8CC-pO-LDW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E72-6A-ftv" userLabel="VacationWeather">
+                                                <rect key="frame" x="0.0" y="80" width="374" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="gzc-ms-PAX"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XEZ-l4-LhN" userLabel="vacationLocationStackView">
-                                                <rect key="frame" x="0.0" y="69.999999999999986" width="374" height="200.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="104.99999999999999" width="374" height="165.66666666666663"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rEG-Fa-vY4" userLabel="weatherPictoVacationPlace">
-                                                        <rect key="frame" x="0.0" y="0.0" width="183" height="200.66666666666666"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="183" height="165.66666666666666"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dFX-45-0DX" userLabel="temperatureVacationPlace">
-                                                        <rect key="frame" x="191" y="0.0" width="183" height="200.66666666666666"/>
+                                                        <rect key="frame" x="191" y="0.0" width="183" height="165.66666666666666"/>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
@@ -333,10 +351,10 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K0A-Xs-pXU" userLabel="currentPlaceLabel">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K0A-Xs-pXU" userLabel="currentPlaceStackView">
                                         <rect key="frame" x="0.0" y="280.66666666666674" width="374" height="270.33333333333326"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5F-Ju-Y0h" userLabel="CurrentLocationLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emplacement actuel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5F-Ju-Y0h" userLabel="localPlaceLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="OQU-ae-yne"/>
@@ -345,14 +363,32 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ayx-fB-w0Z" userLabel="currentLocationStackView">
-                                                <rect key="frame" x="0.0" y="60.000000000000014" width="374" height="210.33333333333337"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordonnées" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hy-E7-0cn" userLabel="localCoordinate">
+                                                <rect key="frame" x="0.0" y="50" width="374" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="bqg-ZW-ogS"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUZ-vJ-2KE" userLabel="localWeather">
+                                                <rect key="frame" x="0.0" y="80" width="374" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="ah7-FY-oAV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ayx-fB-w0Z" userLabel="localPlaceStackView">
+                                                <rect key="frame" x="0.0" y="105.00000000000001" width="374" height="165.33333333333337"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UBc-dg-zMD" userLabel="weatherPictoCurrentLocation">
-                                                        <rect key="frame" x="0.0" y="0.0" width="183" height="210.33333333333334"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UBc-dg-zMD" userLabel="weatherPictoLocalPlace">
+                                                        <rect key="frame" x="0.0" y="0.0" width="183" height="165.33333333333334"/>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Kw-NV-U0U" userLabel="temperatureCurrentLocation">
-                                                        <rect key="frame" x="191" y="0.0" width="183" height="210.33333333333334"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Kw-NV-U0U" userLabel="temperatureLocalPlace">
+                                                        <rect key="frame" x="191" y="0.0" width="183" height="165.33333333333334"/>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
@@ -395,11 +431,13 @@
                     <tabBarItem key="tabBarItem" title="Météo" image="sun.max.fill" catalog="system" id="WBP-EY-0pf"/>
                     <connections>
                         <outlet property="activityIndicator" destination="5vk-Nh-1x1" id="3pB-xc-H9V"/>
-                        <outlet property="currentLocationLabel" destination="I5F-Ju-Y0h" id="AQ1-T8-Wb7"/>
-                        <outlet property="temperatureCurrentLocation" destination="2Kw-NV-U0U" id="FBV-2g-IZA"/>
+                        <outlet property="localCoordinate" destination="7hy-E7-0cn" id="R5G-a1-Aeq"/>
+                        <outlet property="localPlaceLabel" destination="I5F-Ju-Y0h" id="gIr-OG-Ety"/>
+                        <outlet property="localWeatherPlacePicto" destination="UBc-dg-zMD" id="PaE-rd-ajy"/>
+                        <outlet property="temperatureLocalPlace" destination="2Kw-NV-U0U" id="fHm-1j-4h1"/>
                         <outlet property="temperatureVacationPlace" destination="dFX-45-0DX" id="xCg-sU-tnQ"/>
+                        <outlet property="vacationCoordinateLocation" destination="cYJ-PD-O3l" id="jn5-kb-ey7"/>
                         <outlet property="vacationPlaceLabel" destination="MRt-tE-XiF" id="grA-zi-vJm"/>
-                        <outlet property="weatherCurrentLocation" destination="UBc-dg-zMD" id="KWn-LP-ntm"/>
                         <outlet property="weatherVacationPlacePicto" destination="rEG-Fa-vY4" id="wzv-kb-78e"/>
                     </connections>
                 </viewController>

@@ -64,6 +64,13 @@
 		<false/>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>openweathermap.org</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>fixer.io</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
@@ -74,6 +81,6 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs to get your local coordinate. please allow to get it !</string>
+	<string>This app needs to get your local coordinate. </string>
 </dict>
 </plist>

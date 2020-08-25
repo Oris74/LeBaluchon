@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct Location {
-    var town:String
-    var country:String
+enum Location {
+  
+    case town(TownName, CountryName)
+    case coord(Coord)
+    
+    typealias TownName = String
+    typealias CountryName = String
 }

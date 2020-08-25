@@ -20,12 +20,12 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
 """
     let source = "en"
     let target = "fr"
-
+    
     func testGetTranslationShouldPostFailedCallback() {
         // Given
         let translationService = TranslationService(
             session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
-
+        
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         translationService.getTranslation(
@@ -37,12 +37,12 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
         })
         wait(for: [expectation], timeout: 0.01)
     }
-
+    
     func testGetTranslationShouldPostFailedCallbackIfNoData() {
         // Given
         let translationService = TranslationService(
             session: URLSessionFake(data: nil, response: nil, error: nil))
-
+        
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         translationService.getTranslation(
@@ -52,10 +52,10 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
                 XCTAssertNil(translate)
                 expectation.fulfill()
         })
-
+        
         wait(for: [expectation], timeout: 0.01)
     }
-
+    
     func testGetTranslationShouldPostFailedCallbackIfIncorrectResponse() {
         // Given
         let translationService = TranslationService(
@@ -63,7 +63,7 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
                 data: FakeResponseData.exchangeRatesCorrectData,
                 response: FakeResponseData.responseKO,
                 error: nil))
-
+        
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         translationService.getTranslation(
@@ -73,10 +73,10 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
                 XCTAssertNil(translate)
                 expectation.fulfill()
         })
-
+        
         wait(for: [expectation], timeout: 0.01)
     }
-
+    
     func testGetTranslationShouldPostFailedCallbackIfIncorrectData() {
         // Given
         let translationService = TranslationService(
@@ -84,7 +84,7 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
                 data: FakeResponseData.incorrectData,
                 response: FakeResponseData.responseOK,
                 error: nil))
-
+        
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         translationService.getTranslation(
@@ -94,10 +94,10 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
                 XCTAssertNil(translate)
                 expectation.fulfill()
         })
-
+        
         wait(for: [expectation], timeout: 0.01)
     }
-
+    
     func testGetTranslationShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         // Given
         let translationService = TranslationService(
@@ -105,7 +105,7 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
                 data: FakeResponseData.translationCorrectData,
                 response: FakeResponseData.responseOK,
                 error: nil))
-
+        
         // When
         let expectation = XCTestExpectation(
             description: "Wait for queue change.")
@@ -114,12 +114,12 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
                 // Then
                 XCTAssertTrue(success)
                 XCTAssertNotNil(translate)
-
+                
                 XCTAssertNotNil(translate?.data.translations[0].translatedText)
                 XCTAssertEqual(translate?.data.translations[0].translatedText, self.textTranslated)
                 expectation.fulfill()
         })
-
+        
         wait(for: [expectation], timeout: 0.01)
     }
 }

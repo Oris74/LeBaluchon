@@ -11,7 +11,7 @@ import Foundation
 // MARK: - ExchangeRates
 struct ExchangeRates: Codable {
     let success: Bool
-    let timestamp: Int
+    // let timestamp: Int
     let base, date: String
     let rates: Rates?
     var euroAmount: Double?

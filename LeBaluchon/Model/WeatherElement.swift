@@ -11,11 +11,6 @@ import Foundation
 // MARK: - WeatherElement
 struct WeatherElement: Codable {
     let id: Int
-    let main, weatherDescription, icon: String
-
-    enum CodingKeys: String, CodingKey {
-        case id, main
-        case weatherDescription
-        case icon
-    }
+    let main, description, icon: String
+    
 }

@@ -12,14 +12,14 @@ import Foundation
 struct OpenWeather: Codable {
     let coord: Coord
     let weather: [WeatherElement]
-    let base: String
+    // let base: String
     let main: Main
-    let visibility: Int
-    let wind: Wind
-    let clouds: Clouds
-    let dt: Int
+    // let visibility: Int
+    // let wind: Wind
+    // let clouds: Clouds
+    // let dt: Int
     let sys: Sys
-    let timezone, id: Int
+    // let timezone, id: Int
     let name: String
     let cod: Int
 }

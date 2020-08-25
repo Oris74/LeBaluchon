@@ -7,37 +7,37 @@
         {
             "id": 801,
             "main": "Clouds",
-            "description": "few clouds",
+            "description": "peu nuageux",
             "icon": "02d"
         }
     ],
     "base": "stations",
     "main": {
-        "temp": 299.6,
-        "feels_like": 300,
-        "temp_min": 297.04,
+        "temp": 300.71,
+        "feels_like": 298.18,
+        "temp_min": 300.37,
         "temp_max": 301.15,
-        "pressure": 1015,
-        "humidity": 48
+        "pressure": 1014,
+        "humidity": 30
     },
     "visibility": 10000,
     "wind": {
-        "speed": 1.5,
-        "deg": 0
+        "speed": 3.1,
+        "deg": 230
     },
     "clouds": {
-        "all": 20
+        "all": 11
     },
-    "dt": 1597424067,
+    "dt": 1598370110,
     "sys": {
         "type": 1,
         "id": 6500,
         "country": "FR",
-        "sunrise": 1597379669,
-        "sunset": 1597430761
+        "sunrise": 1598330893,
+        "sunset": 1598380036
     },
     "timezone": 7200,
-    "id": 6455254,
+    "id": 3037543,
     "name": "Annecy",
     "cod": 200
 }

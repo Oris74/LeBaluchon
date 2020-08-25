@@ -11,7 +11,7 @@ import Foundation
 // MARK: - Rates
 struct Rates: Codable {
     let usd: Double
-
+    
     enum CodingKeys: String, CodingKey {
         case usd = "USD"
     }
