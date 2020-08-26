@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Location {
+enum Location: Hashable {
 
     case town(TownName, CountryName)
     case coord(Coord)

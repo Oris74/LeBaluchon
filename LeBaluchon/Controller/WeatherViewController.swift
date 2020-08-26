@@ -48,7 +48,6 @@ class WeatherViewController: UIViewController {
         checkLocationServices()
         vacationPlacePictoTemperature.image = UIImage(named: "Thermometer.png")
         localPlacePictoTemperature.image = UIImage(named: "Thermometer.png")
-       
     }
 
     override func viewDidAppear(_ animated: Bool) {

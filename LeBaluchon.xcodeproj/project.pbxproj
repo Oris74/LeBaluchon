@@ -43,6 +43,8 @@
 		D99E646424F3F55400262E94 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646324F3F55400262E94 /* Translate.swift */; };
 		D99E646B24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646A24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift */; };
 		D99E646D24F6520900262E94 /* UIImageView Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646C24F6520900262E94 /* UIImageView Extension.swift */; };
+		D99E646F24F6A42300262E94 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646E24F6A42300262E94 /* Services.swift */; };
+		D99E647324F6A59C00262E94 /* Location+Equitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E647224F6A59C00262E94 /* Location+Equitable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		D99E646324F3F55400262E94 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		D99E646A24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherViewController+CLLocationManagerDelegate.swift"; sourceTree = "<group>"; };
 		D99E646C24F6520900262E94 /* UIImageView Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView Extension.swift"; sourceTree = "<group>"; };
+		D99E646E24F6A42300262E94 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		D99E647224F6A59C00262E94 /* Location+Equitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Equitable.swift"; sourceTree = "<group>"; };
 		E1C5480E91ABBBE6581A0EC1 /* Pods_LeBaluchonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeBaluchonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -221,8 +225,7 @@
 		D933B56624EC41680088B13F /* ExchangeRates */ = {
 			isa = PBXGroup;
 			children = (
-				D9110BFC24F161B4001FE28B /* ExchangeRates.swift */,
-				D9110BFB24F161B3001FE28B /* Rates.swift */,
+				D99E647124F6A44800262E94 /* FixerDataStruct */,
 				D9110BFD24F161B4001FE28B /* ExchangeRatesService.swift */,
 			);
 			name = ExchangeRates;
@@ -267,6 +270,7 @@
 		D99E646724F568B400262E94 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D99E646E24F6A42300262E94 /* Services.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -292,8 +296,18 @@
 				D93E251024F2703E006A3884 /* Coord.swift */,
 				D93E251224F27055006A3884 /* Clouds.swift */,
 				D93E251424F30267006A3884 /* Location.swift */,
+				D99E647224F6A59C00262E94 /* Location+Equitable.swift */,
 			);
 			name = OpenWeatherDataStruct;
+			sourceTree = "<group>";
+		};
+		D99E647124F6A44800262E94 /* FixerDataStruct */ = {
+			isa = PBXGroup;
+			children = (
+				D9110BFC24F161B4001FE28B /* ExchangeRates.swift */,
+				D9110BFB24F161B3001FE28B /* Rates.swift */,
+			);
+			name = FixerDataStruct;
 			sourceTree = "<group>";
 		};
 		ED97A9CC7E06E6B90225926C /* Pods */ = {
@@ -493,6 +507,7 @@
 				D9110C1824F16C05001FE28B /* TranslationService.swift in Sources */,
 				D93E250924F26F5A006A3884 /* WeatherViewController.swift in Sources */,
 				D9110C0624F1634D001FE28B /* ExchangeRateViewController.swift in Sources */,
+				D99E647324F6A59C00262E94 /* Location+Equitable.swift in Sources */,
 				D93E251124F2703E006A3884 /* Coord.swift in Sources */,
 				D9110C0C24F16B65001FE28B /* TranslationViewController.swift in Sources */,
 				D9110C1424F16BAF001FE28B /* Translation.swift in Sources */,
@@ -501,6 +516,7 @@
 				D93E251324F27055006A3884 /* Clouds.swift in Sources */,
 				D93E250D24F27016006A3884 /* Sys.swift in Sources */,
 				D99E646D24F6520900262E94 /* UIImageView Extension.swift in Sources */,
+				D99E646F24F6A42300262E94 /* Services.swift in Sources */,
 				D9110C0024F161B4001FE28B /* ExchangeRatesService.swift in Sources */,
 				D93E251524F30267006A3884 /* Location.swift in Sources */,
 				D93E250B24F27007006A3884 /* WeatherElement.swift in Sources */,

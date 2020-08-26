@@ -12,17 +12,20 @@ class WeatherService {
     static let shared = WeatherService()
     private init() {}
 
-    private var task: URLSessionDataTask?
+    private var task: [Location: URLSessionDataTask?] = [:]
     private var weatherSession = URLSession(configuration: .default)
+    private let openWeathermapUrl = URL(string: "http://api.openweathermap.org/data/2.5/weather")!
+
     init(session: URLSession) {
         self.weatherSession = session
     }
-    private let openWeathermapUrl = URL(string: "http://api.openweathermap.org/data/2.5/weather")!
 
     func getWeather(place: Location, callback: @escaping (Bool, OpenWeather?) -> Void) {
         let request = createWeatherRequest(location: place)
-        //task.cancel()
-        task = weatherSession.dataTask(with: request) { (data, response, error) in
+        if let currentTask=task[place] {
+            currentTask?.cancel()
+        }
+        task[place] = weatherSession.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)
@@ -48,7 +51,9 @@ class WeatherService {
                 }
             }
         }
-        task?.resume()
+        if let currentTask = task[place] {
+            currentTask?.resume()
+        }
     }
 
     private func createWeatherRequest(location: Location) -> URLRequest {

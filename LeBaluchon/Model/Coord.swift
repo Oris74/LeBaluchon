@@ -9,6 +9,6 @@
 import Foundation
 
 // MARK: - Coord
-struct Coord: Codable {
-    var lon, lat: Double
+struct Coord: Hashable, Codable {
+    let lon, lat: Double
 }

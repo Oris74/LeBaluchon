@@ -104,7 +104,7 @@ class WeatherServiceTestCase: XCTestCase {
                 XCTAssertEqual(weather?.name, townName)
             }
                 XCTAssertEqual(weather?.weather[0].main, "Clouds" )
-            XCTAssertEqual(weather?.weather[0].icon, "02d" )
+            XCTAssertEqual(weather?.weather[0].icon, "04d" )
             expectation.fulfill()
         })
 
