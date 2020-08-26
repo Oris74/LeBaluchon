@@ -14,7 +14,7 @@ class WeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
     var currentPlace: Location
     let vacationPlace: Location
-    
+
     @IBOutlet weak var vacationPlaceLabel: UILabel!
     @IBOutlet weak var weatherVacationPlacePicto: UIImageView!
     @IBOutlet weak var temperatureVacationPlace: UIImageView!
@@ -27,35 +27,34 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var vacationCoordinateLocation: UILabel!
 
     required init?(coder: NSCoder) {
-        //self.currentPlace = .coord
+        self.currentPlace = .coord(Coord(lon: 0.0, lat: 0.0))
         self.vacationPlace = .town("New York", "us")
         super.init(coder: coder)
 
     }
-    
+
     override func viewDidLoad() {
         toggleActivityIndicator(shown: false)
         checkLocationServices()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         locationManager.startUpdatingLocation()
         if let location = locationManager.location?.coordinate {
-            currentPlace = .coord(Coord(lon:location.longitude, lat:location.latitude))
+            currentPlace = .coord(Coord(lon: location.longitude, lat: location.latitude))
         }
     }
-    
+
     @IBAction func buttonTapped(_ sender: Any) {
         weather(place: vacationPlace, completionHandler: { weather in
             self.updateVacationPlace(weather: weather)
         })
-        weather(place: currentPlace, completionHandler: { weather in
-            do {
-                try self.updateCurrentPlace(weather: weather)
-            } catch let error as WeatherViewController.NetworkError {
-                presentAlert(message: error)
-            }
-        }) 
+     /*   weather(place: currentPlace, completionHandler: { (weather) in
+        self.updateCurrentPlace(weather: weather)
+            //} catch let error as WeatherViewController.NetworkError {
+              //  presentAlert(message: error)
+            //}
+        })*/
     }
 
     func weather(place: Location, completionHandler: @escaping (OpenWeather) -> Void) {
@@ -72,10 +71,10 @@ class WeatherViewController: UIViewController {
     private func updateVacationPlace(weather: OpenWeather) {
         let pictoCode = weather.weather[0].icon
         let urlPicto = URL(string: "http://openweathermap.org/img/wn/"+pictoCode+"@2x.png")
-        
+
         vacationPlaceLabel.text = weather.name
         vacationCoordinateLocation.text = "Longitude: \(weather.coord.lon) / Latitude: \(weather.coord.lat)"
-        
+
         weatherVacationPlacePicto.load(url: urlPicto! )
         temperatureVacationPlace.image = UIImage(named: "temperate.png")
     }
@@ -86,13 +85,13 @@ class WeatherViewController: UIViewController {
             localCoordinate.text = "Longitude: ? / Latitude: ?"
             throw NetworkError.coordinateMissing
         }
-        
+
         localCoordinate.text = "Longitude: \(coord.lon) / Latitude: \(coord.lat)"
-        
+
         let pictoCode = weather.weather[0].icon
         let urlPicto = URL(string: "http://openweathermap.org/img/wn/"+pictoCode+"@2x.png")
         localWeatherPlacePicto.load(url: urlPicto! )
-        
+
         temperatureLocalPlace.image = UIImage(named: "temperate.png")
     }
 
@@ -119,44 +118,5 @@ extension UIImageView {
                 }
             }
         }
-    }
-}
-
-extension WeatherViewController: CLLocationManagerDelegate {
-    func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
-            setupLocationManager()
-            checkLocationAuthorization()
-        } else {
-            presentAlert(message: "Géolocalisation Impossible")
-        }
-    }
-    
-    func setupLocationManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
-    
-    func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse:
-           break
-        case .denied:
-            break
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .authorizedAlways:
-            break
-        case .restricted:
-            break
-        @unknown default:
-            break
-        }
-    }
-    enum NetworkError: Error {
-        case coordinateMissing
-        case orderIsEmpty
-        case invalidPaymentMethod
-        case insufficientFundings
     }
 }

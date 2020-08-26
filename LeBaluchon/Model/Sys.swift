@@ -10,7 +10,14 @@ import Foundation
 
 // MARK: - Sys
 struct Sys: Codable {
-    let type, id: Int
+    let type, identifiant: Int
     let country: String
     let sunrise, sunset: Int
+    enum CodingKeys: String, CodingKey {
+           case type
+           case identifiant = "id"
+           case country
+           case sunrise
+           case sunset
+       }
 }

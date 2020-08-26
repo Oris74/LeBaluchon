@@ -11,14 +11,14 @@ import Foundation
 class WeatherService {
     static let shared = WeatherService()
     private init() {}
-    
+
     private var task: URLSessionDataTask?
     private var weatherSession = URLSession(configuration: .default)
     init(session: URLSession) {
         self.weatherSession = session
     }
     private let openWeathermapUrl = URL(string: "http://api.openweathermap.org/data/2.5/weather")!
-    
+
     func getWeather(place: Location, callback: @escaping (Bool, OpenWeather?) -> Void) {
         let request = createWeatherRequest(location: place)
         //task.cancel()
@@ -50,11 +50,11 @@ class WeatherService {
         }
         task?.resume()
     }
-    
+
     private func createWeatherRequest(location: Location) -> URLRequest {
         var components = URLComponents(url: openWeathermapUrl, resolvingAgainstBaseURL: false)!
         var queryItems = [URLQueryItem]()
-       
+
         switch location {
         case .coord(let coordinatePlace):
             queryItems.append(URLQueryItem(name: "lat", value: String(coordinatePlace.lat)))
@@ -62,7 +62,7 @@ class WeatherService {
         case .town( let townName, let countryName):
             queryItems.append(URLQueryItem(name: "q", value: "\(townName),\(countryName)"))
         }
-       
+
         queryItems.append(URLQueryItem(name: "appid", value: "bb40a38a8c8520cc06a6df6efe45cef1"))
         queryItems.append(URLQueryItem(name: "lang", value: "fr"))
         queryItems = queryItems.filter { !$0.name.isEmpty }

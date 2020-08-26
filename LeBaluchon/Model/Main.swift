@@ -14,7 +14,7 @@ struct Main: Codable {
     let feelsLike: Double
     let tempMin, tempMax: Double
     let pressure, humidity: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case temp
         case feelsLike = "feels_like"
