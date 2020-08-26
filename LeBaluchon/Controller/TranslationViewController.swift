@@ -32,7 +32,10 @@ class TranslationViewController: UIViewController {
         self.targetLanguage = "en"
         switchText = false
         super.init(coder: coder)
+    }
 
+    override func viewDidLoad() {
+        toggleActivityIndicator(shown: false)
     }
 
     func translation() {

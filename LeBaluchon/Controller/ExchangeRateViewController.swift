@@ -15,6 +15,7 @@ class ExchangeRateViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     @IBAction func conversionButtonTapped(_ sender: UIButton) {
+        self.viewEditing
         guard let amount = currentAmount.text else { return }
 
         toggleActivityIndicator(shown: true)

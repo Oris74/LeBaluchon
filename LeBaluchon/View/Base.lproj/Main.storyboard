@@ -7,6 +7,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Traduction-->
+        <scene sceneID="nuP-uM-MbK">
+            <objects>
+                <navigationController id="vx6-CN-0jU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Traduction" image="bubble.left.and.bubble.right" catalog="system" id="nvA-vh-pXe"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="d22-jQ-xxM">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6ZC-ym-NhG" kind="relationship" relationship="rootViewController" id="rRd-gV-Nns"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qaa-TO-pyD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="273" y="-375"/>
+        </scene>
         <!--Translation-->
         <scene sceneID="sDf-nZ-kcK">
             <objects>
@@ -16,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veuillez saisir votre  phrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyT-3Y-idy">
-                                <rect key="frame" x="8.6666666666666572" y="69" width="358" height="25"/>
+                                <rect key="frame" x="8.6666666666666572" y="113" width="358" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="YWv-n4-k08"/>
                                 </constraints>
@@ -25,10 +42,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="SO0-iV-Qa5" userLabel="mainStack">
-                                <rect key="frame" x="20" y="114" width="335" height="595"/>
+                                <rect key="frame" x="20" y="158" width="335" height="551"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JVW-U4-Hve" userLabel="stackSource">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="263.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="241.66666666666666"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FrenchFlag" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nu8-dA-DNx" userLabel="sourceFlag">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -37,7 +54,7 @@
                                                 </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMQ-HP-pYs" userLabel="sourceText">
-                                                <rect key="frame" x="0.0" y="29.999999999999986" width="335" height="233.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="29.999999999999986" width="335" height="211.66666666666663"/>
                                                 <accessibility key="accessibilityConfiguration" label="sourceText"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="995" constant="200" id="VrN-T9-2Wl"/>
@@ -50,7 +67,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDh-du-TM4" userLabel="stakButtons">
-                                        <rect key="frame" x="0.0" y="272.66666666666669" width="335" height="50"/>
+                                        <rect key="frame" x="0.0" y="250.66666666666669" width="335" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfd-QA-zJE" userLabel="translationButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
@@ -82,7 +99,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1Mp-tw-3R0" userLabel="stackTarget">
-                                        <rect key="frame" x="0.0" y="331.66666666666674" width="335" height="263.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="309.66666666666669" width="335" height="241.33333333333331"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UKFlag" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BpK-vf-UPl" userLabel="targetFlag">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -91,7 +108,7 @@
                                                 </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPy-Fk-kdB" userLabel="targetText">
-                                                <rect key="frame" x="0.0" y="30.000000000000014" width="335" height="233.33333333333337"/>
+                                                <rect key="frame" x="0.0" y="30.000000000000014" width="335" height="211.33333333333337"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -106,7 +123,7 @@
                                 </constraints>
                             </stackView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Gzo-u8-ct2" userLabel="Activity Indicator">
-                                <rect key="frame" x="167.66666666666666" y="386" width="40" height="40"/>
+                                <rect key="frame" x="167.66666666666666" y="273.66666666666669" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="bVO-8Y-f5W"/>
                                     <constraint firstAttribute="width" constant="40" id="has-HZ-kdf"/>
@@ -121,12 +138,13 @@
                             <constraint firstItem="Gzo-u8-ct2" firstAttribute="centerX" secondItem="Kfo-vm-oRg" secondAttribute="centerX" id="HyV-2T-zJN"/>
                             <constraint firstItem="gyT-3Y-idy" firstAttribute="top" secondItem="PXk-7i-wbb" secondAttribute="top" constant="25" id="KIm-Js-OJh"/>
                             <constraint firstItem="SO0-iV-Qa5" firstAttribute="top" secondItem="gyT-3Y-idy" secondAttribute="bottom" constant="20" id="aiR-5V-2QN"/>
+                            <constraint firstItem="Gzo-u8-ct2" firstAttribute="centerY" secondItem="gMQ-HP-pYs" secondAttribute="centerY" id="fcI-UM-xQy"/>
                             <constraint firstItem="gyT-3Y-idy" firstAttribute="centerX" secondItem="Kfo-vm-oRg" secondAttribute="centerX" id="iZ8-ge-myW"/>
-                            <constraint firstItem="Gzo-u8-ct2" firstAttribute="centerY" secondItem="Kfo-vm-oRg" secondAttribute="centerY" id="pMy-4t-rPP"/>
+                            <constraint firstItem="Gzo-u8-ct2" firstAttribute="centerX" secondItem="gMQ-HP-pYs" secondAttribute="centerX" id="yfk-JW-X55"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PXk-7i-wbb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Traduction" image="bubble.left.and.bubble.right" catalog="system" id="7YP-j4-6j5"/>
+                    <navigationItem key="navigationItem" title="Traduction" id="Zrr-Bc-aOg"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Gzo-u8-ct2" id="kRX-dz-a7h"/>
                         <outlet property="sourceFlag" destination="nu8-dA-DNx" id="xXY-VB-6FQ"/>
@@ -137,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Z2-pe-uSj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.39130434782609" y="-385.59782608695656"/>
+            <point key="canvasLocation" x="1113" y="-374"/>
         </scene>
         <!--ExchangeRate-->
         <scene sceneID="2PH-Ov-neV">
@@ -148,11 +166,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dollar" translatesAutoresizingMaskIntoConstraints="NO" id="tfl-Ig-BsF">
-                                <rect key="frame" x="20" y="64" width="335" height="665"/>
+                                <rect key="frame" x="20" y="108" width="335" height="621"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hRa-dv-BcT" userLabel="currentAmount">
-                                <rect key="frame" x="87.666666666666686" y="114" width="200" height="50"/>
+                                <rect key="frame" x="87.666666666666686" y="158" width="200" height="50"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" keyboardKey="YES"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
@@ -160,13 +181,16 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yO5-A0-jES">
-                                <rect key="frame" x="297.66666666666669" y="114" width="51" height="50"/>
+                                <rect key="frame" x="297.66666666666669" y="158" width="51" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CLE-aN-c2L" userLabel="convertedAmount">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CLE-aN-c2L" userLabel="convertedAmount">
                                 <rect key="frame" x="87.666666666666686" y="381" width="200" height="50"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="9nZ-sp-RQF"/>
                                     <constraint firstAttribute="height" constant="50" id="Qe7-Ch-Fdk"/>
@@ -175,7 +199,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Montant" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRw-ha-QJI">
-                                <rect key="frame" x="117" y="69" width="141" height="25"/>
+                                <rect key="frame" x="117" y="113" width="141" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="fUR-0s-m55"/>
                                 </constraints>
@@ -190,7 +214,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="4hg-8S-1V1">
-                                <rect key="frame" x="167.66666666666666" y="669" width="40" height="40"/>
+                                <rect key="frame" x="167.66666666666666" y="500" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="EMX-ic-rTc"/>
                                     <constraint firstAttribute="height" constant="40" id="O1d-wf-S3V"/>
@@ -207,13 +231,16 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1aP-U6-zEt" userLabel="currentRate">
                                         <rect key="frame" x="139.66666666666669" y="0.0" width="32" height="34"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs4-SE-d5E" userLabel="conversionButton">
-                                <rect key="frame" x="123" y="184" width="129" height="36"/>
+                                <rect key="frame" x="123" y="228" width="129" height="36"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="20"/>
                                 <state key="normal" title="CONVERSION">
@@ -235,7 +262,7 @@
                             <constraint firstItem="4hg-8S-1V1" firstAttribute="centerX" secondItem="QRh-BC-KLh" secondAttribute="centerX" id="Aps-0L-PS8"/>
                             <constraint firstItem="TRw-ha-QJI" firstAttribute="centerX" secondItem="QRh-BC-KLh" secondAttribute="centerX" id="CU2-IR-8nD"/>
                             <constraint firstItem="60p-ty-ub6" firstAttribute="top" secondItem="CLE-aN-c2L" secondAttribute="bottom" constant="25" id="HUb-gr-USh"/>
-                            <constraint firstItem="4Lu-q0-EXz" firstAttribute="bottom" secondItem="4hg-8S-1V1" secondAttribute="bottom" constant="20" id="Jte-ts-Ffc"/>
+                            <constraint firstItem="4hg-8S-1V1" firstAttribute="bottom" secondItem="60p-ty-ub6" secondAttribute="bottom" constant="50" id="Jte-ts-Ffc"/>
                             <constraint firstItem="hRa-dv-BcT" firstAttribute="height" secondItem="CLE-aN-c2L" secondAttribute="height" id="N92-gT-Xcq"/>
                             <constraint firstItem="yO5-A0-jES" firstAttribute="centerY" secondItem="hRa-dv-BcT" secondAttribute="centerY" id="Nq7-48-dsn"/>
                             <constraint firstItem="60p-ty-ub6" firstAttribute="centerX" secondItem="QRh-BC-KLh" secondAttribute="centerX" id="S1O-59-ye5"/>
@@ -261,7 +288,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Lu-q0-EXz"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Taux de Change" image="dollarsign.circle.fill" catalog="system" largeContentSizeImage="dollarsign.circle.fill" id="yaD-Kh-qcl" userLabel="ExchangeRateButton"/>
+                    <navigationItem key="navigationItem" title="Taux de Change" id="gYO-Kg-wsL"/>
                     <connections>
                         <outlet property="activityIndicator" destination="4hg-8S-1V1" id="nMl-0e-twM"/>
                         <outlet property="convertedAmount" destination="CLE-aN-c2L" id="XxJ-db-hUP"/>
@@ -272,7 +299,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIE-sf-zqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="QEp-f6-86e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-136.875" y="-1211.6197183098591"/>
+            <point key="canvasLocation" x="1114" y="-1227"/>
+        </scene>
+        <!--Taux de Change-->
+        <scene sceneID="KjQ-Om-7OY">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kwl-dB-hXV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="CS0-ea-Y0T" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Taux de Change" image="dollarsign.circle.fill" catalog="system" id="7z0-uk-AZV"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="35f-iv-VAx">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="R1j-Qh-q8Y" kind="relationship" relationship="rootViewController" id="nUp-Oe-iJT"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="274" y="-1227"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="whx-M6-vjj">
@@ -284,45 +328,63 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="R1j-Qh-q8Y" kind="relationship" relationship="viewControllers" id="p7C-rf-GuV"/>
-                        <segue destination="6ZC-ym-NhG" kind="relationship" relationship="viewControllers" id="i0j-mC-FNO"/>
-                        <segue destination="DN3-b6-md9" kind="relationship" relationship="viewControllers" id="NoZ-pa-NvL"/>
+                        <segue destination="CS0-ea-Y0T" kind="relationship" relationship="viewControllers" id="cgD-Fz-pgy"/>
+                        <segue destination="vx6-CN-0jU" kind="relationship" relationship="viewControllers" id="lou-N3-DOX"/>
+                        <segue destination="h6b-9b-cXY" kind="relationship" relationship="viewControllers" id="Dp4-Xz-SpY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2eq-n0-Wjt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1262" y="-291"/>
+            <point key="canvasLocation" x="-1202" y="-375"/>
+        </scene>
+        <!--Météo-->
+        <scene sceneID="VgJ-w6-8pg">
+            <objects>
+                <navigationController id="h6b-9b-cXY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Météo" image="sun.max.fill" catalog="system" id="8QO-rX-vnB"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WHN-Tp-FX8">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DN3-b6-md9" kind="relationship" relationship="rootViewController" id="mh8-LG-HX7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dOd-0v-aBo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="273" y="376"/>
         </scene>
         <!--Weather-->
         <scene sceneID="6iN-K7-8vB">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6gV-ri-wjg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="DN3-b6-md9" userLabel="Weather" customClass="WeatherViewController" customModule="LeBaluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="olF-jD-FhO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5vk-Nh-1x1" userLabel="Activity Indicator Vacation">
-                                <rect key="frame" x="169" y="242.33333333333337" width="37" height="46"/>
+                                <rect key="frame" x="169" y="275.33333333333331" width="37" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="98v-vN-Ktz"/>
                                     <constraint firstAttribute="width" constant="37" id="wtP-gh-5zT"/>
                                 </constraints>
                             </activityIndicatorView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ZCQ-1D-NUG" userLabel="Activity Indicator Local">
-                                <rect key="frame" x="169" y="589.66666666666663" width="37" height="46"/>
+                                <rect key="frame" x="169" y="600.66666666666663" width="37" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="ia5-ie-Ajz"/>
                                     <constraint firstAttribute="width" constant="37" id="jbD-1e-nnv"/>
                                 </constraints>
                             </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RPz-Vw-PXS">
-                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
+                                <rect key="frame" x="10" y="88" width="355" height="641"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3GQ-lP-XPq" userLabel="vacationPlaceStackView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="337.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="315.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lieu de vacances" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRt-tE-XiF" userLabel="vacationPlaceLabel">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="lgd-1f-sBg"/>
                                                 </constraints>
@@ -333,7 +395,7 @@
                                                 <size key="shadowOffset" width="5" height="5"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordonnées" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYJ-PD-O3l" userLabel="coordinateVacationLocation">
-                                                <rect key="frame" x="0.0" y="50" width="375" height="30"/>
+                                                <rect key="frame" x="0.0" y="50" width="355" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="8CC-pO-LDW"/>
                                                 </constraints>
@@ -342,7 +404,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E72-6A-ftv" userLabel="vacationWeatherDescription">
-                                                <rect key="frame" x="0.0" y="80" width="375" height="25"/>
+                                                <rect key="frame" x="0.0" y="80" width="355" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="gzc-ms-PAX"/>
                                                 </constraints>
@@ -350,24 +412,23 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XEZ-l4-LhN" userLabel="vacationLocationStackView">
-                                                <rect key="frame" x="0.0" y="104.99999999999999" width="375" height="232.66666666666663"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="XEZ-l4-LhN" userLabel="vacationLocationStackView">
+                                                <rect key="frame" x="0.0" y="104.99999999999999" width="355" height="210.66666666666663"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rEG-Fa-vY4" userLabel="weatherPictoVacationPlace">
-                                                        <rect key="frame" x="0.0" y="0.0" width="251" height="232.66666666666666"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="210.66666666666666"/>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2j-qy-XHz">
-                                                        <rect key="frame" x="259" y="0.0" width="116" height="232.66666666666666"/>
+                                                        <rect key="frame" x="263" y="0.0" width="92" height="210.66666666666666"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="dFX-45-0DX" userLabel="temperatureVacationPlace">
-                                                                <rect key="frame" x="0.0" y="0.0" width="26" height="232.66666666666666"/>
-                                                                <rect key="contentStretch" x="0.0" y="0.050000000000000003" width="1" height="1"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="26" height="210.66666666666666"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="26" id="QOf-zW-N8T"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpZ-5H-May" userLabel="temperatureVacationPlaceLabel">
-                                                                <rect key="frame" x="26" y="0.0" width="90" height="232.66666666666666"/>
+                                                                <rect key="frame" x="26" y="0.0" width="66" height="210.66666666666666"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -379,10 +440,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K0A-Xs-pXU" userLabel="currentPlaceStackView">
-                                        <rect key="frame" x="0.0" y="347.66666666666674" width="375" height="337.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="325.66666666666674" width="355" height="315.33333333333326"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emplacement actuel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5F-Ju-Y0h" userLabel="localPlaceLabel">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="OQU-ae-yne"/>
                                                 </constraints>
@@ -393,7 +454,7 @@
                                                 <size key="shadowOffset" width="5" height="5"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordonnées" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hy-E7-0cn" userLabel="localCoordinate">
-                                                <rect key="frame" x="0.0" y="50" width="375" height="30"/>
+                                                <rect key="frame" x="0.0" y="50" width="355" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="bqg-ZW-ogS"/>
                                                 </constraints>
@@ -402,7 +463,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUZ-vJ-2KE" userLabel="localWeatherDescription">
-                                                <rect key="frame" x="0.0" y="80" width="375" height="25"/>
+                                                <rect key="frame" x="0.0" y="80" width="355" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="ah7-FY-oAV"/>
                                                 </constraints>
@@ -410,23 +471,23 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ayx-fB-w0Z" userLabel="localPlaceStackView">
-                                                <rect key="frame" x="0.0" y="105.00000000000001" width="375" height="232.33333333333337"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ayx-fB-w0Z" userLabel="localPlaceStackView">
+                                                <rect key="frame" x="0.0" y="104.99999999999996" width="355" height="210.33333333333337"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UBc-dg-zMD" userLabel="weatherPictoLocalPlace">
-                                                        <rect key="frame" x="0.0" y="0.0" width="255" height="232.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="259" height="210.33333333333334"/>
                                                     </imageView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zba-KV-DgV">
-                                                        <rect key="frame" x="263" y="0.0" width="112" height="232.33333333333334"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="zba-KV-DgV">
+                                                        <rect key="frame" x="263" y="0.0" width="92" height="210.33333333333334"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="2Kw-NV-U0U" userLabel="temperatureLocalPlace">
-                                                                <rect key="frame" x="0.0" y="0.0" width="26" height="232.33333333333334"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="26" height="210.33333333333334"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="26" id="eao-Lh-cub"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eE1-fh-34W" userLabel="temperatureLocalPlaceLabel">
-                                                                <rect key="frame" x="26" y="0.0" width="86" height="232.33333333333334"/>
+                                                                <rect key="frame" x="27" y="0.0" width="65" height="210.33333333333334"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -438,22 +499,25 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="zba-KV-DgV" firstAttribute="width" secondItem="T2j-qy-XHz" secondAttribute="width" id="3iL-jq-B8Y"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="lnJ-az-9KG" firstAttribute="trailing" secondItem="RPz-Vw-PXS" secondAttribute="trailing" id="3Y6-02-mRn"/>
+                            <constraint firstItem="lnJ-az-9KG" firstAttribute="trailing" secondItem="RPz-Vw-PXS" secondAttribute="trailing" constant="10" id="3Y6-02-mRn"/>
                             <constraint firstItem="ayx-fB-w0Z" firstAttribute="centerX" secondItem="ZCQ-1D-NUG" secondAttribute="centerX" id="3t6-gC-znx"/>
                             <constraint firstItem="5vk-Nh-1x1" firstAttribute="centerY" secondItem="XEZ-l4-LhN" secondAttribute="centerY" id="Hhb-t7-ygS"/>
                             <constraint firstItem="RPz-Vw-PXS" firstAttribute="top" secondItem="lnJ-az-9KG" secondAttribute="top" id="P6U-g5-n0M"/>
                             <constraint firstItem="lnJ-az-9KG" firstAttribute="bottom" secondItem="RPz-Vw-PXS" secondAttribute="bottom" id="P8b-LA-c49"/>
                             <constraint firstItem="5vk-Nh-1x1" firstAttribute="centerX" secondItem="XEZ-l4-LhN" secondAttribute="centerX" id="QQJ-UG-xOO"/>
                             <constraint firstItem="ayx-fB-w0Z" firstAttribute="centerY" secondItem="ZCQ-1D-NUG" secondAttribute="centerY" id="ng3-s7-D18"/>
-                            <constraint firstItem="RPz-Vw-PXS" firstAttribute="leading" secondItem="lnJ-az-9KG" secondAttribute="leading" id="vxG-F6-Y2v"/>
+                            <constraint firstItem="RPz-Vw-PXS" firstAttribute="leading" secondItem="lnJ-az-9KG" secondAttribute="leading" constant="10" id="vxG-F6-Y2v"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lnJ-az-9KG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Météo" image="sun.max.fill" catalog="system" id="WBP-EY-0pf"/>
+                    <navigationItem key="navigationItem" title="Météo" id="zu5-uB-Yk9"/>
                     <connections>
                         <outlet property="localActivityIndicator" destination="ZCQ-1D-NUG" id="nbG-F9-Gpn"/>
                         <outlet property="localCoordinate" destination="7hy-E7-0cn" id="P8O-fN-yvv"/>
@@ -471,9 +535,8 @@
                         <outlet property="vacationWeatherDescription" destination="E72-6A-ftv" id="TK3-ae-nMA"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6gV-ri-wjg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="134.78260869565219" y="382.33695652173918"/>
+            <point key="canvasLocation" x="1113" y="342"/>
         </scene>
     </scenes>
     <resources>
