@@ -65,6 +65,8 @@ class WeatherService {
 
         queryItems.append(URLQueryItem(name: "appid", value: "bb40a38a8c8520cc06a6df6efe45cef1"))
         queryItems.append(URLQueryItem(name: "lang", value: "fr"))
+        queryItems.append(URLQueryItem(name: "units", value: "metric"))
+
         queryItems = queryItems.filter { !$0.name.isEmpty }
         components.queryItems = queryItems
         print(components.url!)

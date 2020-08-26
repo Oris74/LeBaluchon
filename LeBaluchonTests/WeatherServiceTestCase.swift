@@ -100,8 +100,10 @@ class WeatherServiceTestCase: XCTestCase {
             // Then
             XCTAssertTrue(success)
             XCTAssertNotNil(weather)
-            XCTAssertEqual(weather?.name, self.locationTest.town )
-            XCTAssertEqual(weather?.weather[0].main, "Clouds" )
+            if case .town(let townName, _) = self.locationTest {
+                XCTAssertEqual(weather?.name, townName)
+            }
+                XCTAssertEqual(weather?.weather[0].main, "Clouds" )
             XCTAssertEqual(weather?.weather[0].icon, "02d" )
             expectation.fulfill()
         })

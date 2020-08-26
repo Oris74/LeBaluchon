@@ -42,6 +42,7 @@
 		D93E251524F30267006A3884 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93E251424F30267006A3884 /* Location.swift */; };
 		D99E646424F3F55400262E94 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646324F3F55400262E94 /* Translate.swift */; };
 		D99E646B24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646A24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift */; };
+		D99E646D24F6520900262E94 /* UIImageView Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646C24F6520900262E94 /* UIImageView Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		D93E251424F30267006A3884 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		D99E646324F3F55400262E94 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		D99E646A24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherViewController+CLLocationManagerDelegate.swift"; sourceTree = "<group>"; };
+		D99E646C24F6520900262E94 /* UIImageView Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView Extension.swift"; sourceTree = "<group>"; };
 		E1C5480E91ABBBE6581A0EC1 /* Pods_LeBaluchonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeBaluchonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				D93E250824F26F5A006A3884 /* WeatherViewController.swift */,
+				D99E646C24F6520900262E94 /* UIImageView Extension.swift */,
 				D99E646A24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift */,
 				D9110C0524F1634D001FE28B /* ExchangeRateViewController.swift */,
 				D9110C0B24F16B65001FE28B /* TranslationViewController.swift */,
@@ -497,6 +500,7 @@
 				D9110BFF24F161B4001FE28B /* ExchangeRates.swift in Sources */,
 				D93E251324F27055006A3884 /* Clouds.swift in Sources */,
 				D93E250D24F27016006A3884 /* Sys.swift in Sources */,
+				D99E646D24F6520900262E94 /* UIImageView Extension.swift in Sources */,
 				D9110C0024F161B4001FE28B /* ExchangeRatesService.swift in Sources */,
 				D93E251524F30267006A3884 /* Location.swift in Sources */,
 				D93E250B24F27007006A3884 /* WeatherElement.swift in Sources */,

@@ -40,10 +40,4 @@ extension WeatherViewController: CLLocationManagerDelegate {
             break
         }
     }
-    enum NetworkError: Error {
-        case coordinateMissing
-        case orderIsEmpty
-        case invalidPaymentMethod
-        case insufficientFundings
-    }
 }
