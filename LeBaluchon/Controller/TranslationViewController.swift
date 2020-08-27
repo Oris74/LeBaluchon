@@ -20,6 +20,7 @@ class TranslationViewController: UIViewController {
     var switchText: Bool
 
     @IBAction func translationButtonTapped(_ sender: Any) {
+        dismissKeyboard()
         translation()
     }
 
@@ -36,6 +37,8 @@ class TranslationViewController: UIViewController {
 
     override func viewDidLoad() {
         toggleActivityIndicator(shown: false)
+        self.sourceText.delegate = self
+        super.viewDidLoad()
     }
 
     func translation() {
@@ -78,6 +81,10 @@ class TranslationViewController: UIViewController {
         targetText.text = translate.data.translations[0].translatedText
         self.toggleActivityIndicator(shown: false)
     }
+
+    internal func dismissKeyboard() {
+           view.endEditing(true)
+       }
 
     private func toggleActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown

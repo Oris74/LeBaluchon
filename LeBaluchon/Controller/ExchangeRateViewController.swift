@@ -15,7 +15,28 @@ class ExchangeRateViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     @IBAction func conversionButtonTapped(_ sender: UIButton) {
-        self.viewEditing
+        conversionValue()
+        dismissKeyboard()
+    }
+
+    override func viewDidLoad() {
+        toggleActivityIndicator(shown: false)
+        self.currentAmount.delegate = self
+        super.viewDidLoad()
+    }
+    private func update(exchangeRate: ExchangeRates) {
+
+        currentRate.text = String(exchangeRate.rates?.usd ?? 0.0)
+        convertedAmount.text =  String(exchangeRate.euroToDollar ?? 0.0)
+
+        self.toggleActivityIndicator(shown: false)
+    }
+
+    private func toggleActivityIndicator(shown: Bool) {
+        activityIndicator.isHidden = !shown
+    }
+
+    internal func conversionValue() {
         guard let amount = currentAmount.text else { return }
 
         toggleActivityIndicator(shown: true)
@@ -29,22 +50,11 @@ class ExchangeRateViewController: UIViewController {
                 self.presentAlert(message: "récupération des données impossible")
             }
         }
+
     }
 
-    override func viewDidLoad() {
-        toggleActivityIndicator(shown: false)
-    }
-
-    private func update(exchangeRate: ExchangeRates) {
-
-        currentRate.text = String(exchangeRate.rates?.usd ?? 0.0)
-        convertedAmount.text =  String(exchangeRate.euroToDollar ?? 0.0)
-
-        self.toggleActivityIndicator(shown: false)
-    }
-
-    private func toggleActivityIndicator(shown: Bool) {
-        activityIndicator.isHidden = !shown
+   internal func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     func presentAlert(message: String) {

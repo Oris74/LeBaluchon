@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		343846E71EE8FB05B346CBFF /* Pods_LeBaluchon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0CE58BC97E54C9974BBA7F /* Pods_LeBaluchon.framework */; };
 		C675FCE46FB116AAD4202E73 /* Pods_LeBaluchonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C5480E91ABBBE6581A0EC1 /* Pods_LeBaluchonTests.framework */; };
+		D90D1ACA24F7A3840053A861 /* ExchangeRateViewController+UITexteFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90D1AC924F7A3840053A861 /* ExchangeRateViewController+UITexteFieldDelegate.swift */; };
+		D90D1ACC24F7A9BC0053A861 /* TranslationViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90D1ACB24F7A9BC0053A861 /* TranslationViewController+UITextFieldDelegate.swift */; };
 		D9110BFE24F161B4001FE28B /* Rates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9110BFB24F161B3001FE28B /* Rates.swift */; };
 		D9110BFF24F161B4001FE28B /* ExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9110BFC24F161B4001FE28B /* ExchangeRates.swift */; };
 		D9110C0024F161B4001FE28B /* ExchangeRatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9110BFD24F161B4001FE28B /* ExchangeRatesService.swift */; };
@@ -63,6 +65,8 @@
 		7F7ADBC0A0D4FBBAD95AACF2 /* Pods-LeBaluchon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeBaluchon.debug.xcconfig"; path = "Target Support Files/Pods-LeBaluchon/Pods-LeBaluchon.debug.xcconfig"; sourceTree = "<group>"; };
 		ADADC8464D2F84E32B135FB6 /* Pods-LeBaluchonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeBaluchonTests.release.xcconfig"; path = "Target Support Files/Pods-LeBaluchonTests/Pods-LeBaluchonTests.release.xcconfig"; sourceTree = "<group>"; };
 		C45CF3E6A0162E161A1CF02B /* Pods-LeBaluchonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeBaluchonTests.debug.xcconfig"; path = "Target Support Files/Pods-LeBaluchonTests/Pods-LeBaluchonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D90D1AC924F7A3840053A861 /* ExchangeRateViewController+UITexteFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExchangeRateViewController+UITexteFieldDelegate.swift"; sourceTree = "<group>"; };
+		D90D1ACB24F7A9BC0053A861 /* TranslationViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranslationViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		D9110BFB24F161B3001FE28B /* Rates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rates.swift; sourceTree = "<group>"; };
 		D9110BFC24F161B4001FE28B /* ExchangeRates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRates.swift; sourceTree = "<group>"; };
 		D9110BFD24F161B4001FE28B /* ExchangeRatesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRatesService.swift; sourceTree = "<group>"; };
@@ -126,6 +130,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D90D1ACD24F7AF6E0053A861 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				D99E646C24F6520900262E94 /* UIImageView Extension.swift */,
+				D99E646A24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift */,
+				D93E250824F26F5A006A3884 /* WeatherViewController.swift */,
+			);
+			name = Weather;
+			sourceTree = "<group>";
+		};
+		D90D1ACE24F7AFA00053A861 /* ExchangeRate */ = {
+			isa = PBXGroup;
+			children = (
+				D9110C0524F1634D001FE28B /* ExchangeRateViewController.swift */,
+				D90D1AC924F7A3840053A861 /* ExchangeRateViewController+UITexteFieldDelegate.swift */,
+			);
+			name = ExchangeRate;
+			sourceTree = "<group>";
+		};
+		D90D1ACF24F7AFB90053A861 /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				D9110C0B24F16B65001FE28B /* TranslationViewController.swift */,
+				D90D1ACB24F7A9BC0053A861 /* TranslationViewController+UITextFieldDelegate.swift */,
+			);
+			name = Translation;
+			sourceTree = "<group>";
+		};
 		D915D37624EAD725004F251C = {
 			isa = PBXGroup;
 			children = (
@@ -184,11 +216,9 @@
 		D915D3A524EAD765004F251C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D93E250824F26F5A006A3884 /* WeatherViewController.swift */,
-				D99E646C24F6520900262E94 /* UIImageView Extension.swift */,
-				D99E646A24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift */,
-				D9110C0524F1634D001FE28B /* ExchangeRateViewController.swift */,
-				D9110C0B24F16B65001FE28B /* TranslationViewController.swift */,
+				D90D1ACF24F7AFB90053A861 /* Translation */,
+				D90D1ACE24F7AFA00053A861 /* ExchangeRate */,
+				D90D1ACD24F7AF6E0053A861 /* Weather */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -502,6 +532,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D90D1ACC24F7A9BC0053A861 /* TranslationViewController+UITextFieldDelegate.swift in Sources */,
 				D99E646B24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift in Sources */,
 				D93E250F24F27028006A3884 /* Main.swift in Sources */,
 				D9110C1824F16C05001FE28B /* TranslationService.swift in Sources */,
@@ -516,6 +547,7 @@
 				D93E251324F27055006A3884 /* Clouds.swift in Sources */,
 				D93E250D24F27016006A3884 /* Sys.swift in Sources */,
 				D99E646D24F6520900262E94 /* UIImageView Extension.swift in Sources */,
+				D90D1ACA24F7A3840053A861 /* ExchangeRateViewController+UITexteFieldDelegate.swift in Sources */,
 				D99E646F24F6A42300262E94 /* Services.swift in Sources */,
 				D9110C0024F161B4001FE28B /* ExchangeRatesService.swift in Sources */,
 				D93E251524F30267006A3884 /* Location.swift in Sources */,
