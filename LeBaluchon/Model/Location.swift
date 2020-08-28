@@ -9,10 +9,8 @@
 import Foundation
 
 enum Location: Hashable {
-
     case town(TownName, CountryName)
     case coord(Coord)
-
     typealias TownName = String
     typealias CountryName = String
 }

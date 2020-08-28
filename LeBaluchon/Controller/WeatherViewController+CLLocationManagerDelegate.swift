@@ -27,7 +27,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
-           break
+            break
         case .denied:
             break
         case .notDetermined:

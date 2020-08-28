@@ -383,14 +383,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5vk-Nh-1x1" userLabel="Activity Indicator Vacation">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5vk-Nh-1x1" userLabel="Activity Indicator Vacation">
                                 <rect key="frame" x="169" y="275.33333333333331" width="37" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="98v-vN-Ktz"/>
                                     <constraint firstAttribute="width" constant="37" id="wtP-gh-5zT"/>
                                 </constraints>
                             </activityIndicatorView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ZCQ-1D-NUG" userLabel="Activity Indicator Local">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ZCQ-1D-NUG" userLabel="Activity Indicator Local">
                                 <rect key="frame" x="169" y="600.66666666666663" width="37" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="ia5-ie-Ajz"/>

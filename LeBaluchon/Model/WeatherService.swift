@@ -8,31 +8,42 @@
 
 import Foundation
 
-class WeatherService {
+class WeatherService: NetworkServices {
     static let shared = WeatherService()
-    private init() {}
-
-    private var task: [Location: URLSessionDataTask?] = [:]
-    private var weatherSession = URLSession(configuration: .default)
+    private override init() {}
+    var task: [Location: URLSessionDataTask?] = [:]
     private let openWeathermapUrl = URL(string: "http://api.openweathermap.org/data/2.5/weather")!
 
-    init(session: URLSession) {
-        self.weatherSession = session
+    let commonQueryItems: [String: String?] =
+        ["appid": "bb40a38a8c8520cc06a6df6efe45cef1",
+         "lang": "fr",
+         "units": "metric"]
+    var coordonateQuery: [String: String?] =
+        ["lat": nil,
+         "lon": nil]
+    var locationQueryItems: [String: String?] =
+        ["q": nil]
+
+    let httpMethode = "GET"
+
+    init(weatherSession: URLSession) {
+        super.init()
+        self.session = weatherSession
     }
 
     func getWeather(place: Location, callback: @escaping (Bool, OpenWeather?) -> Void) {
-        let request = createWeatherRequest(location: place)
+        let query = createQuery(place: place)
+        let request = createRequest(url: openWeathermapUrl, methode: httpMethode, queryItems: query)
+
         if let currentTask=task[place] {
             currentTask?.cancel()
         }
-        task[place] = weatherSession.dataTask(with: request) { (data, response, error) in
+        task[place] = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)
                     return
                 }
-                print("data: \(data)")
-                print("error: \(data)")
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     callback(false, nil)
                     return
@@ -56,27 +67,19 @@ class WeatherService {
         }
     }
 
-    private func createWeatherRequest(location: Location) -> URLRequest {
-        var components = URLComponents(url: openWeathermapUrl, resolvingAgainstBaseURL: false)!
-        var queryItems = [URLQueryItem]()
+    private func createQuery(place: Location) -> [String: String?] {
+        var query = commonQueryItems
 
-        switch location {
+        switch place {
         case .coord(let coordinatePlace):
-            queryItems.append(URLQueryItem(name: "lat", value: String(coordinatePlace.lat)))
-            queryItems.append(URLQueryItem(name: "lon", value: String(coordinatePlace.lon)))
+            coordonateQuery["lat"] = String(coordinatePlace.lat)
+            coordonateQuery["lon"] = String(coordinatePlace.lon)
+            query.merge(coordonateQuery) {(current, _) in current}
+
         case .town( let townName, let countryName):
-            queryItems.append(URLQueryItem(name: "q", value: "\(townName),\(countryName)"))
+            locationQueryItems["q"] = "\(townName),\(countryName)"
+            query.merge(locationQueryItems) {(current, _) in current}
         }
-
-        queryItems.append(URLQueryItem(name: "appid", value: "bb40a38a8c8520cc06a6df6efe45cef1"))
-        queryItems.append(URLQueryItem(name: "lang", value: "fr"))
-        queryItems.append(URLQueryItem(name: "units", value: "metric"))
-
-        queryItems = queryItems.filter { !$0.name.isEmpty }
-        components.queryItems = queryItems
-        print(components.url!)
-        var request = URLRequest(url: components.url!)
-        request.httpMethod = "GET"
-        return request
+        return query
     }
 }

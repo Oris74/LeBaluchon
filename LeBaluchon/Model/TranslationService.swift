@@ -8,26 +8,34 @@
 
 import Foundation
 
-class TranslationService {
+class TranslationService: NetworkServices {
     static let shared = TranslationService()
-    private init() {}
-
+    private override init() {}
     private var task: URLSessionDataTask?
+    private var queryItems: [String: String?] =
+        ["key": "AIzaSyDkpFUqtuBa96oLuy9iC1ZrDpaQH1qo_iE",
+         "q": nil,
+         "source": nil,
+         "target": nil
+    ]
 
-    private var translationSession = URLSession(configuration: .default)
-
-    init(session: URLSession) {
-        self.translationSession = session
+    init(translationSession: URLSession) {
+        super.init()
+        self.session = translationSession
     }
 
     private  let googleTranslateUrl = URL(string: "https://translation.googleapis.com/language/translate/v2")!
 
     func getTranslation(text: String, source: String, target: String, callback: @escaping (Bool, Translate?) -> Void) {
-        let request = createTranslationRequest(text: text, source: source, target: target)
+
+        queryItems["q"] = text
+        queryItems["source"] = source
+        queryItems["target"] = target
+        let request = createRequest(url: googleTranslateUrl, methode: "POST", queryItems: queryItems)
 
         task?.cancel()
 
-        task = translationSession.dataTask(with: request) { (data, response, error) in
+        task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)
@@ -39,31 +47,20 @@ class TranslationService {
                     return
                 }
 
-                guard let translate = try? JSONDecoder().decode(Translate.self, from: data) else {
-                    callback(false, nil)
-                    return
+                print("response: \(response)")
+                do {
+                    guard let translate = try JSONDecoder().decode(Translate?.self, from: data) else {
+                        callback(false, nil)
+                        return
+                    }
+                    callback(true, translate)
+                } catch let error {
+                    if let decodingError = error as? DecodingError {
+                        print("Error coverting: ", decodingError)
+                    }
                 }
-
-                callback(true, translate)
             }
         }
         task?.resume()
-    }
-
-    private func createTranslationRequest(text: String, source: String, target: String) -> URLRequest {
-        var components = URLComponents(url: googleTranslateUrl, resolvingAgainstBaseURL: false)!
-
-        components.queryItems = [
-            URLQueryItem(name: "key", value: "AIzaSyDkpFUqtuBa96oLuy9iC1ZrDpaQH1qo_iE"),
-            URLQueryItem(name: "q", value: text),
-            URLQueryItem(name: "source", value: source),
-            URLQueryItem(name: "target", value: target),
-            URLQueryItem(name: "format", value: "text")
-        ]
-
-        var request = URLRequest(url: components.url!)
-        request.httpMethod = "GET"
-
-        return request
     }
 }
