@@ -18,7 +18,7 @@ class WeatherServiceTestCase: XCTestCase {
     func testGetWeatherbyLocationShouldPostFailedCallback() {
         // Given
         let weatherService = WeatherService(
-            session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
+            weatherSession: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -35,7 +35,7 @@ class WeatherServiceTestCase: XCTestCase {
     func testGetWeatherByLocationShouldPostFailedCallbackIfNoData() {
         // Given
         let weatherService = WeatherService(
-            session: URLSessionFake(data: nil, response: nil, error: nil))
+            weatherSession: URLSessionFake(data: nil, response: nil, error: nil))
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -52,7 +52,7 @@ class WeatherServiceTestCase: XCTestCase {
     func testGetWeatherByLocationShouldPostFailedCallbackIfIncorrectResponse() {
         // Given
         let weatherService = WeatherService(
-            session: URLSessionFake(
+            weatherSession: URLSessionFake(
                 data: FakeResponseData.weatherCorrectData,
                 response: FakeResponseData.responseKO,
                 error: nil))
@@ -71,7 +71,7 @@ class WeatherServiceTestCase: XCTestCase {
 
     func testGetWeatherShouldPostFailedCallbackIfIncorrectData() {
         // Given
-        let weatherService = WeatherService(session: URLSessionFake(
+        let weatherService = WeatherService(weatherSession: URLSessionFake(
             data: FakeResponseData.incorrectData,
             response: FakeResponseData.responseOK,
             error: nil))
@@ -89,7 +89,7 @@ class WeatherServiceTestCase: XCTestCase {
 
     func testGetWeatherShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         // Given
-        let weatherService = WeatherService(session: URLSessionFake(
+        let weatherService = WeatherService(weatherSession: URLSessionFake(
             data: FakeResponseData.weatherCorrectData,
             response: FakeResponseData.responseOK,
             error: nil))

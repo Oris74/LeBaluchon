@@ -8,27 +8,32 @@
 
 import Foundation
 
-class ExchangeRatesService {
+class ExchangeRatesService: NetworkServices {
     static let shared = ExchangeRatesService()
-    private init() {}
+    private override init() {}
 
     private var task: URLSessionDataTask?
-    private var exchangeRateSession = URLSession(configuration: .default)
 
-    init(session: URLSession) {
-        self.exchangeRateSession = session
+    init(exchangeRateSession: URLSession) {
+        super.init()
+        self.session = exchangeRateSession
     }
 
     private  let exchangeRateUrl =
         URL(string:
-            "http://data.fixer.io/api/latest?access_key=2e59286d64809e5f0d78a74a37ba71d7")!
+            "http://data.fixer.io/api/latest")!
+
+    private var queryItems: [String: String?] =
+        ["access_key": nil]
 
     func getExchangeRate(callback: @escaping (Bool, ExchangeRates?) -> Void) {
-        let request = createExchangeRateRequest()
+        let keyFixer = Utilities.getValueForAPIKey(named: "API_Fixer")
+        queryItems["access_key"] = keyFixer
+        let request = createRequest(url: exchangeRateUrl, methode: "GET", queryItems: queryItems)
 
         task?.cancel()
 
-        task = exchangeRateSession.dataTask(with: request) { (data, response, error) in
+        task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)
@@ -39,19 +44,20 @@ class ExchangeRatesService {
                     callback(false, nil)
                     return
                 }
-
-                guard let exchangeRates = try? JSONDecoder().decode(ExchangeRates.self, from: data) else {
-                    callback(false, nil)
-                    return
+                print("response: \(response)")
+                do {
+                    guard let exchangeRates = try JSONDecoder().decode(ExchangeRates?.self, from: data) else {
+                        callback(false, nil)
+                        return
+                    }
+                    callback(true, exchangeRates)
+                } catch let error {
+                    if let decodingError = error as? DecodingError {
+                        print("Error coverting: ", decodingError)
+                    }
                 }
-
-                callback(true, exchangeRates)
             }
         }
         task?.resume()
-    }
-
-    private func createExchangeRateRequest() -> URLRequest {
-        return  URLRequest(url: exchangeRateUrl)
     }
 }

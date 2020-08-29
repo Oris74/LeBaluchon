@@ -14,8 +14,8 @@ class WeatherService: NetworkServices {
     var task: [Location: URLSessionDataTask?] = [:]
     private let openWeathermapUrl = URL(string: "http://api.openweathermap.org/data/2.5/weather")!
 
-    let commonQueryItems: [String: String?] =
-        ["appid": "bb40a38a8c8520cc06a6df6efe45cef1",
+    var commonQueryItems: [String: String?] =
+        ["appid": nil,
          "lang": "fr",
          "units": "metric"]
     var coordonateQuery: [String: String?] =
@@ -69,7 +69,8 @@ class WeatherService: NetworkServices {
 
     private func createQuery(place: Location) -> [String: String?] {
         var query = commonQueryItems
-
+        let keyOpenWeathermap = Utilities.getValueForAPIKey(named: "API_OpenWeathermap")
+        commonQueryItems["appId"] = keyOpenWeathermap
         switch place {
         case .coord(let coordinatePlace):
             coordonateQuery["lat"] = String(coordinatePlace.lat)

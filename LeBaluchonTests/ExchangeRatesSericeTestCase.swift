@@ -14,7 +14,7 @@ class ExchangeRatesServiceTestCase: XCTestCase {
     func testGetExchangeRatesShouldPostFailedCallback() {
         // Given
         let exchangeRatesService = ExchangeRatesService(
-            session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
+            exchangeRateSession: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -31,7 +31,7 @@ class ExchangeRatesServiceTestCase: XCTestCase {
     func testGetExchangeRatesShouldPostFailedCallbackIfNoData() {
         // Given
         let exchangeRatesService = ExchangeRatesService(
-            session: URLSessionFake(data: nil, response: nil, error: nil))
+            exchangeRateSession: URLSessionFake(data: nil, response: nil, error: nil))
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -48,7 +48,7 @@ class ExchangeRatesServiceTestCase: XCTestCase {
     func testGetExchangeRatesShouldPostFailedCallbackIfIncorrectResponse() {
         // Given
         let exchangeRatesService = ExchangeRatesService(
-            session: URLSessionFake(
+            exchangeRateSession: URLSessionFake(
                 data: FakeResponseData.exchangeRatesCorrectData,
                 response: FakeResponseData.responseKO,
                 error: nil))
@@ -68,7 +68,7 @@ class ExchangeRatesServiceTestCase: XCTestCase {
     func testGetExchangeRatesShouldPostFailedCallbackIfIncorrectData() {
         // Given
         let exchangeRatesService = ExchangeRatesService(
-            session: URLSessionFake(
+            exchangeRateSession: URLSessionFake(
                 data: FakeResponseData.incorrectData,
                 response: FakeResponseData.responseOK,
                 error: nil))
@@ -87,7 +87,7 @@ class ExchangeRatesServiceTestCase: XCTestCase {
     func testGetExchangeRatesShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         // Given
         let exchangeRatesService = ExchangeRatesService(
-            session: URLSessionFake(
+            exchangeRateSession: URLSessionFake(
                 data: FakeResponseData.exchangeRatesCorrectData,
                 response: FakeResponseData.responseOK,
                 error: nil))

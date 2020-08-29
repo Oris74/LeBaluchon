@@ -24,7 +24,7 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
     func testGetTranslationShouldPostFailedCallback() {
         // Given
         let translationService = TranslationService(
-            session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
+            translationSession: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -41,7 +41,7 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
     func testGetTranslationShouldPostFailedCallbackIfNoData() {
         // Given
         let translationService = TranslationService(
-            session: URLSessionFake(data: nil, response: nil, error: nil))
+            translationSession: URLSessionFake(data: nil, response: nil, error: nil))
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -59,7 +59,7 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
     func testGetTranslationShouldPostFailedCallbackIfIncorrectResponse() {
         // Given
         let translationService = TranslationService(
-            session: URLSessionFake(
+            translationSession: URLSessionFake(
                 data: FakeResponseData.exchangeRatesCorrectData,
                 response: FakeResponseData.responseKO,
                 error: nil))
@@ -80,7 +80,7 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
     func testGetTranslationShouldPostFailedCallbackIfIncorrectData() {
         // Given
         let translationService = TranslationService(
-            session: URLSessionFake(
+            translationSession: URLSessionFake(
                 data: FakeResponseData.incorrectData,
                 response: FakeResponseData.responseOK,
                 error: nil))
@@ -101,7 +101,7 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
     func testGetTranslationShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         // Given
         let translationService = TranslationService(
-            session: URLSessionFake(
+            translationSession: URLSessionFake(
                 data: FakeResponseData.translationCorrectData,
                 response: FakeResponseData.responseOK,
                 error: nil))

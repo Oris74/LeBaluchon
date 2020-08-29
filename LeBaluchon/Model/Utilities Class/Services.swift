@@ -8,8 +8,7 @@
 
 import Foundation
 class NetworkServices {
-   var session = URLSession(configuration: .default)
-   
+    var session = URLSession(configuration: .default)
 
     func createRequest(url: URL, methode: String = "GET", queryItems: [String: String?]) -> URLRequest {
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
@@ -23,5 +22,4 @@ class NetworkServices {
         request.httpMethod = methode
         return request
     }
-
-   }
+}

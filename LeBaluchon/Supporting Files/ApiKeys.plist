@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_Fixer</key>
+	<string>2e59286d64809e5f0d78a74a37ba71d7</string>
+	<key>API_GoogleTranslation</key>
+	<string>AIzaSyDkpFUqtuBa96oLuy9iC1ZrDpaQH1qo_iE</string>
+	<key>API_OpenWeathermap</key>
+	<string>bb40a38a8c8520cc06a6df6efe45cef1</string>
+</dict>
+</plist>

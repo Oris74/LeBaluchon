@@ -13,7 +13,7 @@ extension ExchangeRateViewController: UITextFieldDelegate {
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         currentAmount.resignFirstResponder()
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         dismissKeyboard()

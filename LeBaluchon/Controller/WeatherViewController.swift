@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, VCUtilities {
 
     var locationManager = CLLocationManager()
     var currentPlace: Location
@@ -133,12 +133,5 @@ class WeatherViewController: UIViewController {
             localActivityIndicator.isHidden = !shown
             vacationActivityIndicator.isHidden = !shown
         }
-    }
-
-    func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
     }
 }

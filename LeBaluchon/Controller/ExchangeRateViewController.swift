@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExchangeRateViewController: UIViewController {
+class ExchangeRateViewController: UIViewController, VCUtilities {
     @IBOutlet weak var convertedAmount: UITextField!
     @IBOutlet weak var currentAmount: UITextField!
     @IBOutlet weak var currentRate: UITextField!
@@ -50,17 +50,5 @@ class ExchangeRateViewController: UIViewController {
                 self.presentAlert(message: "récupération des données impossible")
             }
         }
-
-    }
-
-   internal func dismissKeyboard() {
-        view.endEditing(true)
-    }
-
-    func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
     }
 }
