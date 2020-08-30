@@ -93,7 +93,7 @@ class WeatherViewController: UIViewController, VCUtilities {
         })
     }
 
-    private func updateVacationPlace(weather: OpenWeather) throws {
+    private func updateVacationPlace(weather: OpenWeather) {
         let pictoCode = weather.weather[0].icon
         let urlPicto = URL(string: "http://openweathermap.org/img/wn/"+pictoCode+"@2x.png")
         vacationPlaceWeatherPicto.load(url: urlPicto! )
@@ -107,16 +107,17 @@ class WeatherViewController: UIViewController, VCUtilities {
     }
 
     private func updateCurrentPlace(weather: OpenWeather) throws {
+        guard case .coord(let coord) = currentPlace else {
+            localCoordinate.text = "Longitude: ? / Latitude: ?"
+            throw WeatherError.coordinateMissing
+        }
+
         let pictoCode = weather.weather[0].icon
         let urlPicto = URL(string: "http://openweathermap.org/img/wn/"+pictoCode+"@2x.png")
         localPlacePictoWeather.load(url: urlPicto! )
 
         localPlaceLabel.text = weather.name
 
-        guard case .coord(let coord) = currentPlace else {
-            localCoordinate.text = "Longitude: ? / Latitude: ?"
-            throw WeatherError.coordinateMissing
-        }
         localCoordinate.text = "Longitude: \(coord.lon) / Latitude: \(coord.lat)"
 
         localPlaceTemperatureLabel.text = String(weather.main.temp) + "°C"
