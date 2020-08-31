@@ -10,9 +10,11 @@ import Foundation
 
 class TranslationService: NetworkServices {
     static let shared = TranslationService()
-    private override init() {}
+    private init() {}
 
     private var task: URLSessionDataTask?
+
+    var session = URLSession(configuration: .default)
 
     private var queryItems: [String: String?] =
         ["key": nil,
@@ -22,7 +24,6 @@ class TranslationService: NetworkServices {
     ]
 
     init(translationSession: URLSession) {
-        super.init()
         self.session = translationSession
     }
 
@@ -51,7 +52,7 @@ class TranslationService: NetworkServices {
                     return
                 }
 
-                print("response: \(response)")
+              //  print("response: \(response)")
                 do {
                     guard let translate = try JSONDecoder().decode(Translate?.self, from: data) else {
                         callback(false, nil)

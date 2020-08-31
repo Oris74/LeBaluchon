@@ -30,7 +30,6 @@ class FakeResponseData {
 
     static let incorrectData = "erreur".data(using: .utf8)!
 
-    static let imageData = "image".data(using: .utf8)!
 
     // MARK: - Response
     static let responseOK = HTTPURLResponse(
