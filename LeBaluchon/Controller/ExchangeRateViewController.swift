@@ -28,7 +28,7 @@ class ExchangeRateViewController: UIViewController, VCUtilities {
     private func update(exchangeRate: ExchangeRates) {
 
         currentRate.text = String(exchangeRate.rates?.usd ?? 0.0)
-        convertedAmount.text =  String(exchangeRate.euroToDollar ?? 0.0)
+        convertedAmount.text =  String(format: "%.2f", exchangeRate.euroToDollar ?? 0.0)
 
         self.toggleActivityIndicator(shown: false)
     }

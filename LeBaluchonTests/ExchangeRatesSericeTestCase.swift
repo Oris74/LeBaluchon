@@ -81,7 +81,7 @@ class ExchangeRatesServiceTestCase: XCTestCase {
             XCTAssertNil(exchangeRates)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 5.10)
     }
 
     func testGetExchangeRatesShouldPostSuccessCallbackIfNoErrorAndCorrectData() {

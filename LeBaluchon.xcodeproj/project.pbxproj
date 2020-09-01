@@ -45,7 +45,7 @@
 		D964A3CC24FAAD5A00998910 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D964A3CB24FAAD5A00998910 /* ApiKeys.plist */; };
 		D964A3D024FABBE100998910 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964A3CF24FABBE100998910 /* Utilities.swift */; };
 		D964A3D324FABF6D00998910 /* VCUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964A3D224FABF6D00998910 /* VCUtilities.swift */; };
-		D964A3D624FD415A00998910 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964A3D524FD415A00998910 /* NetworkServices.swift */; };
+		D964A3D924FE536100998910 /* UtilitiesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964A3D824FE536100998910 /* UtilitiesTestCase.swift */; };
 		D99E646424F3F55400262E94 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646324F3F55400262E94 /* Translate.swift */; };
 		D99E646B24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646A24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift */; };
 		D99E646D24F6520900262E94 /* UIImageView Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646C24F6520900262E94 /* UIImageView Extension.swift */; };
@@ -108,7 +108,7 @@
 		D964A3CB24FAAD5A00998910 /* ApiKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 		D964A3CF24FABBE100998910 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Utilities/Utilities.swift; sourceTree = "<group>"; };
 		D964A3D224FABF6D00998910 /* VCUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCUtilities.swift; sourceTree = "<group>"; };
-		D964A3D524FD415A00998910 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
+		D964A3D824FE536100998910 /* UtilitiesTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesTestCase.swift; sourceTree = "<group>"; };
 		D99E646324F3F55400262E94 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		D99E646A24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherViewController+CLLocationManagerDelegate.swift"; sourceTree = "<group>"; };
 		D99E646C24F6520900262E94 /* UIImageView Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView Extension.swift"; sourceTree = "<group>"; };
@@ -200,6 +200,7 @@
 			children = (
 				D9110C0924F1646E001FE28B /* FakeResponseData.swift */,
 				D9110C0724F16435001FE28B /* URLSessionFake.swift */,
+				D964A3D724FE530600998910 /* UtilitiesTests */,
 				D933B57724EE72540088B13F /* WeatherTests */,
 				D933B57624EE723D0088B13F /* TranslateTests */,
 				D933B57524ED97E20088B13F /* ExchangeRatesTests */,
@@ -316,10 +317,17 @@
 		D964A3D424FD3E2200998910 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				D964A3D524FD415A00998910 /* NetworkServices.swift */,
 				D964A3CF24FABBE100998910 /* Utilities.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		D964A3D724FE530600998910 /* UtilitiesTests */ = {
+			isa = PBXGroup;
+			children = (
+				D964A3D824FE536100998910 /* UtilitiesTestCase.swift */,
+			);
+			name = UtilitiesTests;
 			sourceTree = "<group>";
 		};
 		D99E646824F56B0700262E94 /* GoogleTranslateDataStruct */ = {
@@ -550,7 +558,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D964A3D624FD415A00998910 /* NetworkServices.swift in Sources */,
 				D90D1ACC24F7A9BC0053A861 /* TranslationViewController+UITextFieldDelegate.swift in Sources */,
 				D99E646B24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift in Sources */,
 				D93E250F24F27028006A3884 /* Main.swift in Sources */,
@@ -588,6 +595,7 @@
 			files = (
 				D9110C0224F161E3001FE28B /* ExchangeRatesSericeTestCase.swift in Sources */,
 				D9110C0824F16435001FE28B /* URLSessionFake.swift in Sources */,
+				D964A3D924FE536100998910 /* UtilitiesTestCase.swift in Sources */,
 				D9110C1624F16BF2001FE28B /* TranslationServiceTestCase.swift in Sources */,
 				D93E250324F19014006A3884 /* WeatherServiceTestCase.swift in Sources */,
 				D9110C0A24F1646E001FE28B /* FakeResponseData.swift in Sources */,

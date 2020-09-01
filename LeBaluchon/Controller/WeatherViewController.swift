@@ -40,7 +40,6 @@ class WeatherViewController: UIViewController, VCUtilities {
         self.currentPlace = .coord(Coord(lon: 0.0, lat: 0.0))
         self.vacationPlace = .town("New York", "us")
         super.init(coder: coder)
-
     }
 
     override func viewDidLoad() {
@@ -87,8 +86,8 @@ class WeatherViewController: UIViewController, VCUtilities {
 
     private func updateVacationPlace(weather: OpenWeather) {
         let pictoCode = weather.weather[0].icon
-        let urlPicto = URL(string: "http://openweathermap.org/img/wn/"+pictoCode+"@2x.png")
-        vacationPlaceWeatherPicto.load(url: urlPicto! )
+        let urlPicto = URL(string: "http://openweathermap.org/img/wn/\(pictoCode)@2x.png")
+        vacationPlaceWeatherPicto.load(url: urlPicto!)
 
         vacationPlaceLabel.text = weather.name
 
@@ -106,7 +105,7 @@ class WeatherViewController: UIViewController, VCUtilities {
 
         let pictoCode = weather.weather[0].icon
         let urlPicto = URL(string: "http://openweathermap.org/img/wn/"+pictoCode+"@2x.png")
-        localPlacePictoWeather.load(url: urlPicto! )
+        localPlacePictoWeather.load(url: urlPicto!)
 
         localPlaceLabel.text = weather.name
 

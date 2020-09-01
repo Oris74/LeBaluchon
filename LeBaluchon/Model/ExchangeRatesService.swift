@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ExchangeRatesService: NetworkServices {
+class ExchangeRatesService {
 
     static let shared = ExchangeRatesService()
     private init() {}
@@ -25,13 +25,13 @@ class ExchangeRatesService: NetworkServices {
         URL(string:
             "http://data.fixer.io/api/latest")!
 
-    private var queryItems: [String: String?] =
-        ["access_key": nil]
+    private var queryItems: [String: String?] = ["access_key": nil]
 
     func getExchangeRate(callback: @escaping (Bool, ExchangeRates?) -> Void) {
         let keyFixer = Utilities.getValueForAPIKey(named: "API_Fixer")
         queryItems["access_key"] = keyFixer
-        let request = createRequest(url: exchangeRateUrl, queryItems: queryItems)
+
+        let request = Utilities.createRequest(url: exchangeRateUrl, queryItems: queryItems)
 
         task?.cancel()
 
@@ -46,17 +46,12 @@ class ExchangeRatesService: NetworkServices {
                     callback(false, nil)
                     return
                 }
-                do {
-                    guard let exchangeRates = try JSONDecoder().decode(ExchangeRates?.self, from: data) else {
-                        callback(false, nil)
-                        return
-                    }
-                    callback(true, exchangeRates)
-                } catch let error {
-                    if let decodingError = error as? DecodingError {
-                        print("Error coverting: ", decodingError)
-                    }
+
+                guard let exchangeRates = try? JSONDecoder().decode(ExchangeRates?.self, from: data) else {
+                    callback(false, nil)
+                    return
                 }
+                callback(true, exchangeRates)
             }
         }
         task?.resume()

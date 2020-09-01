@@ -87,7 +87,7 @@ class WeatherServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func testGetWeatherShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
+    func testGetWeatherGivenTownLocationShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         // Given
         let weatherService = WeatherService(weatherSession: URLSessionFake(
             data: FakeResponseData.weatherCorrectData,
@@ -103,7 +103,30 @@ class WeatherServiceTestCase: XCTestCase {
             if case .town(let townName, _) = self.locationTest {
                 XCTAssertEqual(weather?.name, townName)
             }
-                XCTAssertEqual(weather?.weather[0].main, "Clouds" )
+            XCTAssertEqual(weather?.weather[0].main, "Clouds" )
+            XCTAssertEqual(weather?.weather[0].icon, "04d" )
+            expectation.fulfill()
+        })
+
+        wait(for: [expectation], timeout: 0.01)
+    }
+    func testGetWeatherGivenCoordonateShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
+        // Given
+        let weatherService = WeatherService(weatherSession: URLSessionFake(
+            data: FakeResponseData.weatherCorrectData,
+            response: FakeResponseData.responseOK,
+            error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        weatherService.getWeather(place: coordinateTest, callback: {(success, weather) in
+            // Then
+            XCTAssertTrue(success)
+            XCTAssertNotNil(weather)
+            if case .town(let townName, _) = self.locationTest {
+                XCTAssertEqual(weather?.name, townName)
+            }
+            XCTAssertEqual(weather?.weather[0].main, "Clouds" )
             XCTAssertEqual(weather?.weather[0].icon, "04d" )
             expectation.fulfill()
         })

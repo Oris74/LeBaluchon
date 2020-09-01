@@ -12,7 +12,6 @@ import Foundation
 struct WeatherElement: Codable {
     let identifiant: Int
     let main, weatherDescription, icon: String
-
     enum CodingKeys: String, CodingKey {
         case identifiant = "id"
         case weatherDescription = "description"

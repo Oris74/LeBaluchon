@@ -8,22 +8,25 @@
 
 import Foundation
 
-class WeatherService: NetworkServices {
+class WeatherService {
     static let shared = WeatherService()
     private init() {}
 
     private var session = URLSession(configuration: .default)
 
     private var task: [Location: URLSessionDataTask?] = [:]
+
     private let openWeathermapUrl = URL(string: "http://api.openweathermap.org/data/2.5/weather")!
 
     var commonQueryItems: [String: String?] =
         ["appid": nil,
          "lang": "fr",
          "units": "metric"]
+
     var coordonateQuery: [String: String?] =
         ["lat": nil,
          "lon": nil]
+
     var locationQueryItems: [String: String?] =
         ["q": nil]
 
@@ -33,35 +36,32 @@ class WeatherService: NetworkServices {
 
     func getWeather(place: Location, callback: @escaping (Bool, OpenWeather?) -> Void) {
         let query = createQuery(place: place)
-        let request = createRequest(url: openWeathermapUrl, queryItems: query)
+        let request = Utilities.createRequest(url: openWeathermapUrl, queryItems: query)
 
         if let currentTask = task[place] {
             currentTask?.cancel()
         }
+
         task[place] = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)
                     return
                 }
+
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     callback(false, nil)
                     return
                 }
-              //  print("response: \(response)")
-                do {
-                    guard let weather = try JSONDecoder().decode(OpenWeather?.self, from: data) else {
-                        callback(false, nil)
-                        return
-                    }
-                    callback(true, weather)
-                } catch let error {
-                    if let decodingError = error as? DecodingError {
-                        print("Error coverting: ", decodingError)
-                    }
+
+                guard let weather = try? JSONDecoder().decode(OpenWeather?.self, from: data) else {
+                    callback(false, nil)
+                    return
                 }
+                callback(true, weather)
             }
         }
+
         if let currentTask = task[place] {
             currentTask?.resume()
         }
@@ -69,8 +69,10 @@ class WeatherService: NetworkServices {
 
     private func createQuery(place: Location) -> [String: String?] {
         var query = commonQueryItems
+
         let keyOpenWeathermap = Utilities.getValueForAPIKey(named: "API_OpenWeathermap")
         query["appid"] = keyOpenWeathermap
+
         switch place {
         case .coord(let coordinatePlace):
             coordonateQuery["lat"] = String(coordinatePlace.lat)

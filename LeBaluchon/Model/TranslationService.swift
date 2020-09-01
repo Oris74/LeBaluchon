@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TranslationService: NetworkServices {
+class TranslationService {
     static let shared = TranslationService()
     private init() {}
 
@@ -36,7 +36,7 @@ class TranslationService: NetworkServices {
         queryItems["q"] = text
         queryItems["source"] = source
         queryItems["target"] = target
-        let request = createRequest(url: googleTranslateUrl, methode: "POST", queryItems: queryItems)
+        let request = Utilities.createRequest(url: googleTranslateUrl, methode: "POST", queryItems: queryItems)
 
         task?.cancel()
 
@@ -52,18 +52,11 @@ class TranslationService: NetworkServices {
                     return
                 }
 
-              //  print("response: \(response)")
-                do {
-                    guard let translate = try JSONDecoder().decode(Translate?.self, from: data) else {
-                        callback(false, nil)
-                        return
-                    }
-                    callback(true, translate)
-                } catch let error {
-                    if let decodingError = error as? DecodingError {
-                        print("Error coverting: ", decodingError)
-                    }
+                guard let translate = try? JSONDecoder().decode(Translate?.self, from: data) else {
+                    callback(false, nil)
+                    return
                 }
+                callback(true, translate)
             }
         }
         task?.resume()

@@ -19,8 +19,6 @@ class TranslationViewController: UIViewController, VCUtilities {
     var targetLanguage: String
     var switchText: Bool
 
-    //weak var delegate: ManageServices?
-
     @IBAction func translationButtonTapped(_ sender: Any) {
         dismissKeyboard()
         translation()
@@ -49,9 +47,9 @@ class TranslationViewController: UIViewController, VCUtilities {
 
         TranslationService.shared.getTranslation(
             text: sourceText.text, source: sourceLanguage, target: targetLanguage, callback: { (success, translation) in
+
                 if success, let translation = translation {
                     self.update(translate: translation)
-
                 } else {
                     self.toggleActivityIndicator(shown: false)
                     self.presentAlert(message: "récupération des données impossible")
@@ -85,12 +83,7 @@ class TranslationViewController: UIViewController, VCUtilities {
         self.toggleActivityIndicator(shown: false)
     }
 
-   /* internal func dismissKeyboard() {
-        view.endEditing(true)
-    }*/
-
     private func toggleActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
     }
-
 }

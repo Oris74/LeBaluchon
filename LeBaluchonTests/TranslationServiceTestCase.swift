@@ -16,7 +16,8 @@ The Great Pyramid of Giza (also known as the Pyramid of Khufu or the Pyramid of 
  three pyramids in the Giza pyramid complex.
 """
     let textTranslated = """
-La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéops ou Pyramide de Khéops) est la plus ancienne et la plus grande des trois pyramides du complexe pyramidal de Gizeh.
+La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéops ou Pyramide de Khéops),
+ est la plus ancienne et la plus grande des trois pyramides du complexe pyramidal de Gizeh.
 """
     let source = "en"
     let target = "fr"
