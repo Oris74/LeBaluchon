@@ -33,7 +33,7 @@ class WeatherService: NetworkServices {
 
     func getWeather(place: Location, callback: @escaping (Bool, OpenWeather?) -> Void) {
         let query = createQuery(place: place)
-        let request = createRequest(url: openWeathermapUrl, methode: "GET", queryItems: query)
+        let request = createRequest(url: openWeathermapUrl, queryItems: query)
 
         if let currentTask = task[place] {
             currentTask?.cancel()

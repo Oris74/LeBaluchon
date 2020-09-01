@@ -7,40 +7,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8E8291EC-995E-45FD-8F6C-F6843695147E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LeBaluchon/Controller/WeatherViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "toggleActivityIndicator(shown:place:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EBCA1718-35D9-4046-AA5A-FE579ABBDE06"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LeBaluchon/Controller/WeatherViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "toggleActivityIndicator(shown:place:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "24B0F7D8-B78B-4A60-AB24-D4FE873E54BF"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LeBaluchonTests/WeatherServiceTestCase.swift"
@@ -94,8 +62,8 @@
             filePath = "LeBaluchon/Model/TranslationService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "getTranslation(text:source:target:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +78,8 @@
             filePath = "LeBaluchon/Model/TranslationService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "getTranslation(text:source:target:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +94,8 @@
             filePath = "LeBaluchon/Model/TranslationService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "getTranslation(text:source:target:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,41 +110,9 @@
             filePath = "LeBaluchon/Model/TranslationService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "getTranslation(text:source:target:callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "196081A3-4C75-4151-A534-419A57EA4712"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LeBaluchon/Controller/WeatherViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0EE14D4E-BA97-4993-BBF2-89C7F843BABA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LeBaluchon/Controller/WeatherViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -190,8 +126,8 @@
             filePath = "LeBaluchon/Controller/WeatherViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +158,8 @@
             filePath = "LeBaluchon/Controller/WeatherViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "weather(place:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -231,80 +167,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "799570D9-F20B-4520-B848-766279017025"
+            uuid = "A5D84998-090E-410D-A9BA-A03626AE9972"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LeBaluchon/Model/WeatherService.swift"
+            filePath = "LeBaluchonTests/URLSessionFake.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "getWeather(place:callback:)"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "init(data:response:error:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8B54424D-23D1-4271-AAB3-4F2AFF1A1822"
-            shouldBeEnabled = "No"
+            uuid = "3897B983-4DD1-4B9A-961C-EA8EDE634023"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LeBaluchon/Model/WeatherService.swift"
+            filePath = "LeBaluchon/Model/NetworkServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "getWeather(place:callback:)"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "createRequest(url:methode:queryItems:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "44337FB4-2F3C-464F-9C83-67B0AC555A97"
-            shouldBeEnabled = "No"
+            uuid = "69E030F0-B3CC-43CC-9532-0FEAE1876C73"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LeBaluchon/Model/WeatherService.swift"
+            filePath = "LeBaluchonTests/URLSessionFake.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "getWeather(place:callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "594D02FD-F4C8-4B45-A7CF-7AABCCD03C37"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LeBaluchon/Model/WeatherService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "getWeather(place:callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "ABC639E8-27D4-401C-8FCC-348FF56D37E3"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LeBaluchon/Model/WeatherService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "createQuery(place:)"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "dataTask(with:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

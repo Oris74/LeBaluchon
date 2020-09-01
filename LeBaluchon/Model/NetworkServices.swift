@@ -13,14 +13,13 @@ protocol NetworkServices {
 }
 
 extension NetworkServices {
-    func createRequest(url: URL, methode: String = "GET", queryItems: [String: String?]) -> URLRequest {
+    internal func createRequest(url: URL, methode: String = "GET", queryItems: [String: String?]) -> URLRequest {
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
 
         components.queryItems = queryItems.map {
             URLQueryItem(name: $0, value: $1)
         }
 
-        //print(components.url!)
         var request = URLRequest(url: components.url!)
         request.httpMethod = methode
         return request

@@ -30,7 +30,6 @@ class FakeResponseData {
 
     static let incorrectData = "erreur".data(using: .utf8)!
 
-
     // MARK: - Response
     static let responseOK = HTTPURLResponse(
         url: URL(string: "http://openclassrooms.com")!,

@@ -9,6 +9,7 @@
 import Foundation
 
 class ExchangeRatesService: NetworkServices {
+
     static let shared = ExchangeRatesService()
     private init() {}
 
@@ -19,7 +20,7 @@ class ExchangeRatesService: NetworkServices {
     init(exchangeRateSession: URLSession) {
         self.session = exchangeRateSession
     }
-    
+
     private  let exchangeRateUrl =
         URL(string:
             "http://data.fixer.io/api/latest")!
@@ -30,7 +31,7 @@ class ExchangeRatesService: NetworkServices {
     func getExchangeRate(callback: @escaping (Bool, ExchangeRates?) -> Void) {
         let keyFixer = Utilities.getValueForAPIKey(named: "API_Fixer")
         queryItems["access_key"] = keyFixer
-        let request = createRequest(url: exchangeRateUrl, methode: "GET", queryItems: queryItems)
+        let request = createRequest(url: exchangeRateUrl, queryItems: queryItems)
 
         task?.cancel()
 
@@ -45,7 +46,6 @@ class ExchangeRatesService: NetworkServices {
                     callback(false, nil)
                     return
                 }
-                //print("response: \(response)")
                 do {
                     guard let exchangeRates = try JSONDecoder().decode(ExchangeRates?.self, from: data) else {
                         callback(false, nil)

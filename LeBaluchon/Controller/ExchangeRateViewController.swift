@@ -24,7 +24,7 @@ class ExchangeRateViewController: UIViewController, VCUtilities {
         self.currentAmount.delegate = self
         super.viewDidLoad()
     }
-    
+
     private func update(exchangeRate: ExchangeRates) {
 
         currentRate.text = String(exchangeRate.rates?.usd ?? 0.0)

@@ -58,14 +58,7 @@ class WeatherViewController: UIViewController, VCUtilities {
         }
 
         weather(place: vacationPlace, completionHandler: { weather in
-            do {
-                try self.updateVacationPlace(weather: weather)
-
-            } catch let error as WeatherViewController.WeatherError {
-                self.presentAlert(message: error.rawValue)
-            } catch {
-                self.presentAlert(message: "oups indefined error" )
-            }
+            self.updateVacationPlace(weather: weather)
         })
 
         weather(place: currentPlace, completionHandler: { weather in
@@ -78,7 +71,6 @@ class WeatherViewController: UIViewController, VCUtilities {
                 self.presentAlert(message: "oups indefined error" )
             }
         })
-
     }
 
     func weather(place: Location, completionHandler: @escaping (OpenWeather) -> Void) {
