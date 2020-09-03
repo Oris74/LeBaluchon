@@ -11,24 +11,21 @@ import Foundation
 // MARK: - Utilities
 
 class Utilities {
-    static func getValueForAPIKey(named keyname: String) -> String {
+    enum ManageError: String, Error {
+        case missingCoordinate = "Coordonnées GPS indisponibles"
+        case keyboardError = "veuillez saisir des valeurs numériques"
+        case incorrectDataStruct = "la structure n'est pas conforme aux données API"
+        case httpResponseError
+        case networkError = "Problème d'acces au site"
+        case none
+    }
+
+    static func getValueForAPIKey(named keyname: String) -> String? {
         let filePath = Bundle.main.path(forResource: "ApiKeys", ofType: "plist")
         let plist = NSDictionary(contentsOfFile: filePath!)
 
         let value = plist?.object(forKey: keyname) as? String
 
-        return value!
-    }
-
-    static func createRequest(url: URL, methode: String = "GET", queryItems: [String: String?]) -> URLRequest {
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-
-        components.queryItems = queryItems.map {
-            URLQueryItem(name: $0, value: $1)
-        }
-
-        var request = URLRequest(url: components.url!)
-        request.httpMethod = methode
-        return request
+        return value
     }
 }

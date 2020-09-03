@@ -46,6 +46,7 @@
 		D964A3D024FABBE100998910 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964A3CF24FABBE100998910 /* Utilities.swift */; };
 		D964A3D324FABF6D00998910 /* VCUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964A3D224FABF6D00998910 /* VCUtilities.swift */; };
 		D964A3D924FE536100998910 /* UtilitiesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964A3D824FE536100998910 /* UtilitiesTestCase.swift */; };
+		D964A3DB24FF7E4300998910 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964A3DA24FF7E4300998910 /* NetworkServices.swift */; };
 		D99E646424F3F55400262E94 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646324F3F55400262E94 /* Translate.swift */; };
 		D99E646B24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646A24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift */; };
 		D99E646D24F6520900262E94 /* UIImageView Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E646C24F6520900262E94 /* UIImageView Extension.swift */; };
@@ -109,6 +110,7 @@
 		D964A3CF24FABBE100998910 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Utilities/Utilities.swift; sourceTree = "<group>"; };
 		D964A3D224FABF6D00998910 /* VCUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCUtilities.swift; sourceTree = "<group>"; };
 		D964A3D824FE536100998910 /* UtilitiesTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesTestCase.swift; sourceTree = "<group>"; };
+		D964A3DA24FF7E4300998910 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		D99E646324F3F55400262E94 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		D99E646A24F6481300262E94 /* WeatherViewController+CLLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherViewController+CLLocationManagerDelegate.swift"; sourceTree = "<group>"; };
 		D99E646C24F6520900262E94 /* UIImageView Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView Extension.swift"; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				D964A3CF24FABBE100998910 /* Utilities.swift */,
+				D964A3DA24FF7E4300998910 /* NetworkServices.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				D93E250124F18FFE006A3884 /* WeatherService.swift in Sources */,
 				D9110BFF24F161B4001FE28B /* ExchangeRates.swift in Sources */,
 				D964A3D024FABBE100998910 /* Utilities.swift in Sources */,
+				D964A3DB24FF7E4300998910 /* NetworkServices.swift in Sources */,
 				D93E251324F27055006A3884 /* Clouds.swift in Sources */,
 				D93E250D24F27016006A3884 /* Sys.swift in Sources */,
 				D99E646D24F6520900262E94 /* UIImageView Extension.swift in Sources */,

@@ -15,7 +15,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            presentAlert(message: "Géolocalisation Impossible")
+            manageErrors(errorCode: .missingCoordinate)
         }
     }
 

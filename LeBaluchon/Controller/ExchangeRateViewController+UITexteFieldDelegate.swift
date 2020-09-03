@@ -14,10 +14,16 @@ extension ExchangeRateViewController: UITextFieldDelegate {
         currentAmount.resignFirstResponder()
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    private func textFieldShouldReturn(_ textField: UITextField) throws -> Bool {
         textField.resignFirstResponder()
         dismissKeyboard()
-        conversionValue()
+        guard let valueAmount = textField.text else { return true }
+
+        do {
+            try conversionValue(value: valueAmount)
+        } catch let error as Utilities.ManageError {
+            presentAlert(message: error.rawValue)
+        }
         return true
     }
 }

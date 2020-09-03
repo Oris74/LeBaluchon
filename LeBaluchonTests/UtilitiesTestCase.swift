@@ -22,8 +22,8 @@ class UtilitiesTestCase: XCTestCase {
         let result = Utilities.createRequest(url: urlForTest, queryItems: queryItems)
 
         XCTAssertEqual(result.httpMethod, "GET")
-        //XCTAssertEqual(result.description,
-        //"https://api.openclassroom.fr?&q=La%20Grande%20Pyramide%20de%20Gizeh&key=123")
+        XCTAssertEqual(result.url?.absoluteURL,
+        "https://api.openclassroom.fr?&q=La%20Grande%20Pyramide%20de%20Gizeh&key=123")
     }
 
     // MARK: - test getValueForAPIKey

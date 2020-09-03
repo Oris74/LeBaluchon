@@ -13,6 +13,7 @@ protocol VCUtilities: UIViewController {
 }
 
 extension VCUtilities {
+
     internal func presentAlert(message: String) {
         let alert = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -22,5 +23,9 @@ extension VCUtilities {
 
     internal func dismissKeyboard() {
         view.endEditing(true)
+    }
+
+    func manageErrors(errorCode: Utilities.ManageError) {
+        presentAlert(message: errorCode.rawValue)
     }
 }

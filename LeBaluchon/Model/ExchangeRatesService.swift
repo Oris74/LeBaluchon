@@ -8,10 +8,10 @@
 
 import Foundation
 
-class ExchangeRatesService {
+class ExchangeRatesService: NetworkServices {
 
     static let shared = ExchangeRatesService()
-    private init() {}
+    override private init() {}
 
     private var task: URLSessionDataTask?
 
@@ -27,31 +27,22 @@ class ExchangeRatesService {
 
     private var queryItems: [String: String?] = ["access_key": nil]
 
-    func getExchangeRate(callback: @escaping (Bool, ExchangeRates?) -> Void) {
-        let keyFixer = Utilities.getValueForAPIKey(named: "API_Fixer")
-        queryItems["access_key"] = keyFixer
+    func getExchangeRate(callback: @escaping (Utilities.ManageError, ExchangeRates?) -> Void) {
+        guard let keyFixer = Utilities.getValueForAPIKey(named: "API_Fixer") else { return }
+        let queryItems = [URLQueryItem(name: "access_key", value: keyFixer)]
 
-        let request = Utilities.createRequest(url: exchangeRateUrl, queryItems: queryItems)
+        let request = createRequest(url: exchangeRateUrl, queryItems: queryItems)
 
         task?.cancel()
 
         task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
-                guard let data = data, error == nil else {
-                    callback(false, nil)
-                    return
-                }
-
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(false, nil)
-                    return
-                }
-
-                guard let exchangeRates = try? JSONDecoder().decode(ExchangeRates?.self, from: data) else {
-                    callback(false, nil)
-                    return
-                }
-                callback(true, exchangeRates)
+                self.carryOutData(
+                    ExchangeRates?.self,
+                    data, response, error,
+                    completionHandler: {(exchangeRates, errorCode) in
+                    callback(errorCode, exchangeRates)
+                })
             }
         }
         task?.resume()

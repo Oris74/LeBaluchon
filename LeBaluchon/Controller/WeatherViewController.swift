@@ -15,11 +15,6 @@ class WeatherViewController: UIViewController, VCUtilities {
     var currentPlace: Location
     let vacationPlace: Location
 
-    enum WeatherError: String, Error {
-        case coordinateMissing = "Coordonnées GPS indisponibles"
-        case impossibleGettingData = "Problème dans la récupération des données"
-    }
-
     @IBOutlet weak var vacationPlaceLabel: UILabel!
     @IBOutlet weak var vacationPlaceWeatherPicto: UIImageView!
     @IBOutlet weak var vacationPlacePictoTemperature: UIImageView!
@@ -64,21 +59,22 @@ class WeatherViewController: UIViewController, VCUtilities {
             do {
                 try self.updateCurrentPlace(weather: weather)
 
-            } catch let error as WeatherViewController.WeatherError {
-                self.presentAlert(message: error.rawValue)
+            } catch let error as Utilities.ManageError {
+                self.manageErrors(errorCode: error)
             } catch {
-                self.presentAlert(message: "oups indefined error" )
+                self.presentAlert(message: "oups erreur indéfinie!" )
             }
         })
     }
 
     func weather(place: Location, completionHandler: @escaping (OpenWeather) -> Void) {
         self.toggleActivityIndicator(shown: true, place: place)
-        WeatherService.shared.getWeather(place: place, callback: {(success, weather) in
-            if success, let weather = weather {
+
+        WeatherService.shared.getWeather(place: place, callback: {(errorCode, weather) in
+            if errorCode == .none, let weather = weather {
                 completionHandler(weather)
             } else {
-                self.presentAlert(message: "récupération des données impossible")
+                self.manageErrors(errorCode: errorCode)
             }
             self.toggleActivityIndicator(shown: false, place: place)
         })
@@ -98,9 +94,9 @@ class WeatherViewController: UIViewController, VCUtilities {
     }
 
     private func updateCurrentPlace(weather: OpenWeather) throws {
-        guard case .coord(let coord) = currentPlace else {
+        guard case .coord(let coord) = currentPlace, coord.lat != 0.0 else {
             localCoordinate.text = "Longitude: ? / Latitude: ?"
-            throw WeatherError.coordinateMissing
+            throw Utilities.ManageError.missingCoordinate
         }
 
         let pictoCode = weather.weather[0].icon
@@ -127,3 +123,4 @@ class WeatherViewController: UIViewController, VCUtilities {
         }
     }
 }
+

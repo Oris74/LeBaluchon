@@ -46,13 +46,16 @@ class TranslationViewController: UIViewController, VCUtilities {
         toggleActivityIndicator(shown: true)
 
         TranslationService.shared.getTranslation(
-            text: sourceText.text, source: sourceLanguage, target: targetLanguage, callback: { (success, translation) in
+            text: sourceText.text,
+            source: sourceLanguage,
+            target: targetLanguage,
+            callback: { (errorCode, translation) in
 
-                if success, let translation = translation {
+                if errorCode == .none, let translation = translation {
                     self.update(translate: translation)
                 } else {
                     self.toggleActivityIndicator(shown: false)
-                    self.presentAlert(message: "récupération des données impossible")
+                    self.manageErrors(errorCode: errorCode)
                 }
         })
     }

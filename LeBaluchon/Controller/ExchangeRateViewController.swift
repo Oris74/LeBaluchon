@@ -15,7 +15,15 @@ class ExchangeRateViewController: UIViewController, VCUtilities {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     @IBAction func conversionButtonTapped(_ sender: UIButton) {
-        conversionValue()
+        guard let tappedValue = currentAmount.text else { return }
+
+        do {
+        try conversionValue(value: tappedValue)
+        } catch let errorCode as Utilities.ManageError {
+            manageErrors(errorCode: errorCode)
+        } catch {
+            manageErrors(errorCode: .keyboardError)
+        }
         dismissKeyboard()
     }
 
@@ -37,14 +45,15 @@ class ExchangeRateViewController: UIViewController, VCUtilities {
         activityIndicator.isHidden = !shown
     }
 
-    internal func conversionValue() {
-        guard let amount = currentAmount.text else { return }
-
+    internal func conversionValue(value: String) throws {
         toggleActivityIndicator(shown: true)
+        guard let amount = Double(value) else {
+            throw Utilities.ManageError.keyboardError
+        }
 
-        ExchangeRatesService.shared.getExchangeRate { (success, exchangeRate) in
-            if success, var exchangeRate = exchangeRate {
-                exchangeRate.euroAmount = Double(amount)
+        ExchangeRatesService.shared.getExchangeRate { (errorCode, exchangeRate) in
+            if errorCode == .none, var exchangeRate = exchangeRate {
+                exchangeRate.euroAmount = amount
                 self.update(exchangeRate: exchangeRate)
             } else {
                 self.toggleActivityIndicator(shown: false)

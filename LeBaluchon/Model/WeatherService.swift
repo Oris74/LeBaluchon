@@ -8,9 +8,9 @@
 
 import Foundation
 
-class WeatherService {
+class WeatherService: NetworkServices {
     static let shared = WeatherService()
-    private init() {}
+    override private init() {}
 
     private var session = URLSession(configuration: .default)
 
@@ -18,25 +18,13 @@ class WeatherService {
 
     private let openWeathermapUrl = URL(string: "http://api.openweathermap.org/data/2.5/weather")!
 
-    var commonQueryItems: [String: String?] =
-        ["appid": nil,
-         "lang": "fr",
-         "units": "metric"]
-
-    var coordonateQuery: [String: String?] =
-        ["lat": nil,
-         "lon": nil]
-
-    var locationQueryItems: [String: String?] =
-        ["q": nil]
-
     init(weatherSession: URLSession) {
         self.session = weatherSession
     }
 
-    func getWeather(place: Location, callback: @escaping (Bool, OpenWeather?) -> Void) {
-        let query = createQuery(place: place)
-        let request = Utilities.createRequest(url: openWeathermapUrl, queryItems: query)
+    func getWeather(place: Location, callback: @escaping (Utilities.ManageError, OpenWeather?) -> Void) {
+        let query = buildQueryItems(place: place)
+        let request = createRequest(url: openWeathermapUrl, queryItems: query)
 
         if let currentTask = task[place] {
             currentTask?.cancel()
@@ -44,21 +32,12 @@ class WeatherService {
 
         task[place] = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
-                guard let data = data, error == nil else {
-                    callback(false, nil)
-                    return
-                }
-
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(false, nil)
-                    return
-                }
-
-                guard let weather = try? JSONDecoder().decode(OpenWeather?.self, from: data) else {
-                    callback(false, nil)
-                    return
-                }
-                callback(true, weather)
+                self.carryOutData(
+                    OpenWeather?.self,
+                    data, response, error,
+                    completionHandler: {(weather, errorCode) in
+                        callback(errorCode, weather)
+                })
             }
         }
 
@@ -67,21 +46,20 @@ class WeatherService {
         }
     }
 
-    private func createQuery(place: Location) -> [String: String?] {
-        var query = commonQueryItems
-
+    private func buildQueryItems(place: Location) -> [URLQueryItem] {
         let keyOpenWeathermap = Utilities.getValueForAPIKey(named: "API_OpenWeathermap")
-        query["appid"] = keyOpenWeathermap
+        var query = [
+            URLQueryItem(name: "appid", value: keyOpenWeathermap),
+            URLQueryItem(name: "lang", value: "fr"),
+            URLQueryItem(name: "units", value: "metric")
+        ]
 
         switch place {
         case .coord(let coordinatePlace):
-            coordonateQuery["lat"] = String(coordinatePlace.lat)
-            coordonateQuery["lon"] = String(coordinatePlace.lon)
-            query.merge(coordonateQuery) {(current, _) in current}
-
+            query.append(URLQueryItem(name: "lat", value: String(coordinatePlace.lat)))
+            query.append(URLQueryItem(name: "lon", value: String(coordinatePlace.lon)))
         case .town( let townName, let countryName):
-            locationQueryItems["q"] = "\(townName),\(countryName)"
-            query.merge(locationQueryItems) {(current, _) in current}
+            query.append(URLQueryItem(name: "q", value: "\(townName),\(countryName)"))
         }
         return query
     }
