@@ -11,6 +11,12 @@ import XCTest
 @testable import LeBaluchon
 
 class ExchangeRatesServiceTestCase: XCTestCase {
+    var exchangeRatesService: ExchangeRatesService!
+
+       override func setUp() {
+           super.setUp()
+           exchangeRatesService = ExchangeRatesService()
+       }
     func testGetExchangeRatesShouldPostFailedCallback() {
         // Given
         let exchangeRatesService = ExchangeRatesService(
@@ -18,9 +24,9 @@ class ExchangeRatesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        exchangeRatesService.getExchangeRate { (success, exchangeRates) in
+        exchangeRatesService.getExchangeRate { (errorCode, exchangeRates) in
             // Then
-            XCTAssertFalse(success)
+            XCTAssertEqual(errorCode, Utilities.ManageError.networkError)
             XCTAssertNil(exchangeRates)
             expectation.fulfill()
         }
@@ -35,9 +41,9 @@ class ExchangeRatesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        exchangeRatesService.getExchangeRate { (success, exchangeRates) in
+        exchangeRatesService.getExchangeRate { (errorCode, exchangeRates) in
             // Then
-            XCTAssertFalse(success)
+            XCTAssertEqual(errorCode, Utilities.ManageError.networkError)
             XCTAssertNil(exchangeRates)
             expectation.fulfill()
         }
@@ -55,9 +61,9 @@ class ExchangeRatesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        exchangeRatesService.getExchangeRate { (success, exchangeRates) in
+        exchangeRatesService.getExchangeRate { (errorCode, exchangeRates) in
             // Then
-            XCTAssertFalse(success)
+            XCTAssertEqual(errorCode, Utilities.ManageError.httpResponseError)
             XCTAssertNil(exchangeRates)
             expectation.fulfill()
         }
@@ -75,9 +81,9 @@ class ExchangeRatesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        exchangeRatesService.getExchangeRate { (success, exchangeRates) in
+        exchangeRatesService.getExchangeRate { (errorCode, exchangeRates) in
             // Then
-            XCTAssertFalse(success)
+            XCTAssertEqual(errorCode, Utilities.ManageError.incorrectDataStruct)
             XCTAssertNil(exchangeRates)
             expectation.fulfill()
         }
@@ -94,9 +100,9 @@ class ExchangeRatesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        exchangeRatesService.getExchangeRate { (success, exchangeRates) in
+        exchangeRatesService.getExchangeRate { (errorCode, exchangeRates) in
             // Then
-            XCTAssertTrue(success)
+            XCTAssertEqual(errorCode, Utilities.ManageError.none)
             XCTAssertNotNil(exchangeRates)
 
             XCTAssertTrue(exchangeRates!.success)
@@ -106,5 +112,7 @@ class ExchangeRatesServiceTestCase: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 0.01)
+    }
+func testGetExchangeRatesGivenPostSuccessCallbackIfNoErrorAndCorrectData() {
     }
 }

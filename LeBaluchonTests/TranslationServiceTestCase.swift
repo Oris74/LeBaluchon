@@ -30,9 +30,9 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         translationService.getTranslation(
-            text: textToTranslate, source: source, target: target, callback: { (success, translate) in
+            text: textToTranslate, source: source, target: target, callback: { (errorCode, translate) in
                 // Then
-                XCTAssertFalse(success)
+               XCTAssertNotEqual(errorCode, Utilities.ManageError.none)
                 XCTAssertNil(translate)
                 expectation.fulfill()
         })
@@ -47,9 +47,9 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         translationService.getTranslation(
-            text: textToTranslate, source: source, target: target, callback: { (success, translate) in
+            text: textToTranslate, source: source, target: target, callback: { (errorCode, translate) in
                 // Then
-                XCTAssertFalse(success)
+                XCTAssertEqual(errorCode, Utilities.ManageError.networkError)
                 XCTAssertNil(translate)
                 expectation.fulfill()
         })
@@ -68,9 +68,9 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         translationService.getTranslation(
-            text: textToTranslate, source: source, target: target, callback: { (success, translate) in
+            text: textToTranslate, source: source, target: target, callback: { (errorCode, translate) in
                 // Then
-                XCTAssertFalse(success)
+                XCTAssertEqual(errorCode, Utilities.ManageError.httpResponseError)
                 XCTAssertNil(translate)
                 expectation.fulfill()
         })
@@ -89,9 +89,9 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         translationService.getTranslation(
-            text: textToTranslate, source: source, target: target, callback: { (success, translate) in
+            text: textToTranslate, source: source, target: target, callback: { (errorCode, translate) in
                 // Then
-                XCTAssertFalse(success)
+                XCTAssertEqual(errorCode, Utilities.ManageError.incorrectDataStruct)
                 XCTAssertNil(translate)
                 expectation.fulfill()
         })
@@ -111,9 +111,9 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
         let expectation = XCTestExpectation(
             description: "Wait for queue change.")
         translationService.getTranslation(
-            text: textToTranslate, source: source, target: target, callback: { (success, translate) in
+            text: textToTranslate, source: source, target: target, callback: { (errorCode, translate) in
                 // Then
-                XCTAssertTrue(success)
+                XCTAssertEqual(errorCode, Utilities.ManageError.none)
                 XCTAssertNotNil(translate)
 
                 XCTAssertNotNil(translate?.data.translations[0].translatedText)

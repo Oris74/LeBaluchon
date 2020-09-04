@@ -2,7 +2,7 @@
 //  NetworkServices.swift
 //  LeBaluchon
 //
-//  Created by Laurent Debeaujon on 02/09/2020.
+//  Created by Laurent Debeaujon on 02/09/2020. 
 //  Copyright © 2020 Laurent Debeaujon. All rights reserved.
 //
 

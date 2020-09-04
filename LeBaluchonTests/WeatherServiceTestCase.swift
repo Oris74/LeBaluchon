@@ -22,9 +22,9 @@ class WeatherServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getWeather(place: locationTest, callback: { (success, weather) in
+        weatherService.getWeather(place: locationTest, callback: { (errorCode, weather) in
             // Then
-            XCTAssertFalse(success)
+            XCTAssertEqual(errorCode, Utilities.ManageError.networkError)
             XCTAssertNil(weather)
             expectation.fulfill()
         })
@@ -39,9 +39,9 @@ class WeatherServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getWeather(place: locationTest, callback: { (success, weather) in
+        weatherService.getWeather(place: locationTest, callback: { (errorCode, weather) in
             // Then
-            XCTAssertFalse(success)
+            XCTAssertEqual(errorCode, Utilities.ManageError.networkError)
             XCTAssertNil(weather)
             expectation.fulfill()
         })
@@ -59,9 +59,9 @@ class WeatherServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getWeather(place: locationTest, callback: {(success, weather) in
+        weatherService.getWeather(place: locationTest, callback: {(errorCode, weather) in
             // Then
-            XCTAssertFalse(success)
+            XCTAssertEqual(errorCode, Utilities.ManageError.httpResponseError)
             XCTAssertNil(weather)
             expectation.fulfill()
         })
@@ -77,9 +77,9 @@ class WeatherServiceTestCase: XCTestCase {
             error: nil))
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getWeather(place: locationTest, callback: {(success, weather) in
+        weatherService.getWeather(place: locationTest, callback: {(errorCode, weather) in
             // Then
-            XCTAssertFalse(success)
+            XCTAssertEqual(errorCode, Utilities.ManageError.incorrectDataStruct)
             XCTAssertNil(weather)
             expectation.fulfill()
         })
@@ -96,9 +96,9 @@ class WeatherServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getWeather(place: locationTest, callback: {(success, weather) in
+        weatherService.getWeather(place: locationTest, callback: {(errorCode, weather) in
             // Then
-            XCTAssertTrue(success)
+            XCTAssertEqual(errorCode, Utilities.ManageError.none)
             XCTAssertNotNil(weather)
             if case .town(let townName, _) = self.locationTest {
                 XCTAssertEqual(weather?.name, townName)
@@ -119,9 +119,9 @@ class WeatherServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getWeather(place: coordinateTest, callback: {(success, weather) in
+        weatherService.getWeather(place: coordinateTest, callback: {(errorCode, weather) in
             // Then
-            XCTAssertTrue(success)
+            XCTAssertEqual(errorCode, Utilities.ManageError.none)
             XCTAssertNotNil(weather)
             if case .town(let townName, _) = self.locationTest {
                 XCTAssertEqual(weather?.name, townName)

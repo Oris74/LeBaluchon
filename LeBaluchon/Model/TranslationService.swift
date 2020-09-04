@@ -10,7 +10,6 @@ import Foundation
 
 class TranslationService: NetworkServices {
     static let shared = TranslationService()
-    //override private init(){}
 
     private var task: URLSessionDataTask?
 

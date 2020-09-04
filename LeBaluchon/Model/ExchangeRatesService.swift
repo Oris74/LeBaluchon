@@ -11,7 +11,8 @@ import Foundation
 class ExchangeRatesService: NetworkServices {
 
     static let shared = ExchangeRatesService()
-    override private init() {}
+
+    override init() {}
 
     private var task: URLSessionDataTask?
 
@@ -24,8 +25,6 @@ class ExchangeRatesService: NetworkServices {
     private  let exchangeRateUrl =
         URL(string:
             "http://data.fixer.io/api/latest")!
-
-    private var queryItems: [String: String?] = ["access_key": nil]
 
     func getExchangeRate(callback: @escaping (Utilities.ManageError, ExchangeRates?) -> Void) {
         guard let keyFixer = Utilities.getValueForAPIKey(named: "API_Fixer") else { return }

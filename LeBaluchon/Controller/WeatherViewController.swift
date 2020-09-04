@@ -123,4 +123,3 @@ class WeatherViewController: UIViewController, VCUtilities {
         }
     }
 }
-

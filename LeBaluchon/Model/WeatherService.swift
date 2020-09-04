@@ -10,7 +10,8 @@ import Foundation
 
 class WeatherService: NetworkServices {
     static let shared = WeatherService()
-    override private init() {}
+
+    override init() {}
 
     private var session = URLSession(configuration: .default)
 
