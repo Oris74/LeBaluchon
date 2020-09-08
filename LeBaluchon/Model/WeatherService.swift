@@ -24,7 +24,13 @@ class WeatherService: NetworkServices {
     }
 
     func getWeather(place: Location, callback: @escaping (Utilities.ManageError, OpenWeather?) -> Void) {
-        let query = buildQueryItems(place: place)
+        guard let keyOpenWeathermap = Utilities.getValueForAPIKey(named: "API_OpenWeathermap")
+        else {
+            callback(Utilities.ManageError.apiKeyError, nil)
+            return
+        }
+
+        let query = buildQueryItems(place: place, apiKey: keyOpenWeathermap)
         let request = createRequest(url: openWeathermapUrl, queryItems: query)
 
         if let currentTask = task[place] {
@@ -47,10 +53,10 @@ class WeatherService: NetworkServices {
         }
     }
 
-    private func buildQueryItems(place: Location) -> [URLQueryItem] {
-        let keyOpenWeathermap = Utilities.getValueForAPIKey(named: "API_OpenWeathermap")
+    private func buildQueryItems(place: Location, apiKey: String) -> [URLQueryItem] {
+
         var query = [
-            URLQueryItem(name: "appid", value: keyOpenWeathermap),
+            URLQueryItem(name: "appid", value: apiKey),
             URLQueryItem(name: "lang", value: "fr"),
             URLQueryItem(name: "units", value: "metric")
         ]

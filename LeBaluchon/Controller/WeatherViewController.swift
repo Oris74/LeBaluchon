@@ -87,7 +87,9 @@ class WeatherViewController: UIViewController, VCUtilities {
 
         vacationPlaceLabel.text = weather.name
 
-        vacationPlaceCoordinate.text = "Longitude: \(weather.coord.lon) / Latitude: \(weather.coord.lat)"
+        vacationPlaceCoordinate.text =
+        "Longitude: \(String(format: "%.2f", weather.coord.lon)) /" +
+        " Latitude: \(String(format: "%.2f", weather.coord.lat))"
 
         vacationPlaceTemperatureLabel.text = String(weather.main.temp) + "°C"
         vacationWeatherDescription.text = weather.weather[0].weatherDescription
@@ -105,7 +107,9 @@ class WeatherViewController: UIViewController, VCUtilities {
 
         localPlaceLabel.text = weather.name
 
-        localCoordinate.text = "Longitude: \(coord.lon) / Latitude: \(coord.lat)"
+        localCoordinate.text =
+        "Longitude: \(String(format: "%.2f", coord.lon)) " +
+        "/ Latitude: \(String(format: "%.2f", coord.lat))"
 
         localPlaceTemperatureLabel.text = String(weather.main.temp) + "°C"
         localWeatherDescription.text = weather.weather[0].weatherDescription

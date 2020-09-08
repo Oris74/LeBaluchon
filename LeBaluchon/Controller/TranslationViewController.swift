@@ -43,6 +43,7 @@ class TranslationViewController: UIViewController, VCUtilities {
     }
 
     func translation() {
+
         toggleActivityIndicator(shown: true)
 
         TranslationService.shared.getTranslation(

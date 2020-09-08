@@ -17,6 +17,8 @@ class Utilities {
         case incorrectDataStruct = "la structure n'est pas conforme aux données API"
         case httpResponseError
         case networkError = "Problème d'acces au site"
+        case apiKeyError = "Clef API non recupéré"
+        case emptyValue = "veuillez saisir un texte à traduire"
         case none
     }
 

@@ -27,7 +27,11 @@ class ExchangeRatesService: NetworkServices {
             "http://data.fixer.io/api/latest")!
 
     func getExchangeRate(callback: @escaping (Utilities.ManageError, ExchangeRates?) -> Void) {
-        guard let keyFixer = Utilities.getValueForAPIKey(named: "API_Fixer") else { return }
+        guard let keyFixer = Utilities.getValueForAPIKey(named: "API_Fixer") else {
+            callback(Utilities.ManageError.apiKeyError, nil)
+            return
+        }
+
         let queryItems = [URLQueryItem(name: "access_key", value: keyFixer)]
 
         let request = createRequest(url: exchangeRateUrl, queryItems: queryItems)

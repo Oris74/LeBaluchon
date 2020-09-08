@@ -28,7 +28,15 @@ class TranslationService: NetworkServices {
         target: String,
         callback: @escaping (Utilities.ManageError, Translate?) -> Void) {
 
-        guard let keyGoogleTranslate = Utilities.getValueForAPIKey(named: "API_GoogleTranslation") else { return }
+        guard let keyGoogleTranslate = Utilities.getValueForAPIKey(named: "API_GoogleTranslation") else {
+            callback(Utilities.ManageError.apiKeyError, nil)
+            return
+        }
+
+        guard !text.isEmpty else {
+            callback(Utilities.ManageError.emptyValue, nil)
+            return
+        }
 
         let queryItems = buildQueryItems(key: keyGoogleTranslate, text: text, source: source, target: target)
 
