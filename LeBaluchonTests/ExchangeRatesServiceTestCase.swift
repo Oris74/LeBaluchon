@@ -87,7 +87,7 @@ class ExchangeRatesServiceTestCase: XCTestCase {
             XCTAssertNil(exchangeRates)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 5.10)
+        wait(for: [expectation], timeout: 0.01)
     }
 
     func testGetExchangeRatesShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
@@ -102,7 +102,7 @@ class ExchangeRatesServiceTestCase: XCTestCase {
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         exchangeRatesService.getExchangeRate { (errorCode, exchangeRates) in
             // Then
-            XCTAssertEqual(errorCode, Utilities.ManageError.none)
+            XCTAssertEqual(errorCode, nil)
             XCTAssertNotNil(exchangeRates)
 
             XCTAssertTrue(exchangeRates!.success)
@@ -113,6 +113,22 @@ class ExchangeRatesServiceTestCase: XCTestCase {
 
         wait(for: [expectation], timeout: 0.01)
     }
-func testGetExchangeRatesGivenPostSuccessCallbackIfNoErrorAndCorrectData() {
+func testGetExchangeRatesGivenWrongKeyApiPostSuccessCallbackIfNoErrorAndCorrectData() {
+        // Given
+        let exchangeRatesService = ExchangeRatesService(
+            exchangeRateSession: URLSessionFake(
+                data: FakeResponseData.incorrectData,
+                response: FakeResponseData.responseOK,
+                error: nil), apiKey: "OCC")
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        exchangeRatesService.getExchangeRate { (errorCode, exchangeRates) in
+            // Then
+            XCTAssertEqual(errorCode, Utilities.ManageError.apiKeyError)
+            XCTAssertNil(exchangeRates)
+            expectation.fulfill()
+        }
+    wait(for: [expectation], timeout: 0.01)
     }
 }

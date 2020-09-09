@@ -20,7 +20,6 @@ extension Location: Equatable {
         case (.coord(let coordinateA), .coord(let coordinateB))
             where (coordinateA.lat == coordinateB.lat) && (coordinateA.lon == coordinateB.lon):
             return true
-
         default:
             return false
         }

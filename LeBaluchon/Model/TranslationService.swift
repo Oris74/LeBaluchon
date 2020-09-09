@@ -13,10 +13,14 @@ class TranslationService: NetworkServices {
 
     private var task: URLSessionDataTask?
 
-    private let session: URLSession
+    private var session = URLSession(configuration: .default)
 
-    init(translationSession: URLSession = URLSession(configuration: .default)) {
+    private var apiKey = "API_GoogleTranslation"
+
+    init(translationSession: URLSession = URLSession(configuration: .default),
+         apiKey: String = "API_GoogleTranslation") {
         self.session = translationSession
+        self.apiKey = apiKey
         super.init()
     }
 
@@ -26,15 +30,15 @@ class TranslationService: NetworkServices {
         text: String,
         source: String,
         target: String,
-        callback: @escaping (Utilities.ManageError, Translate?) -> Void) {
+        callback: @escaping (Utilities.ManageError?, Translate?) -> Void) {
 
-        guard let keyGoogleTranslate = Utilities.getValueForAPIKey(named: "API_GoogleTranslation") else {
+        guard let keyGoogleTranslate = Utilities.getValueForAPIKey(named: self.apiKey) else {
             callback(Utilities.ManageError.apiKeyError, nil)
             return
         }
 
         guard !text.isEmpty else {
-            callback(Utilities.ManageError.emptyValue, nil)
+            callback(Utilities.ManageError.emptyText, nil)
             return
         }
 
@@ -44,10 +48,9 @@ class TranslationService: NetworkServices {
 
         task?.cancel()
 
-        task = session.dataTask(with: request) { (data, response, error) in
-
+        task = session.dataTask(with: request) {[weak self] (data, response, error) in
             DispatchQueue.main.async {
-                self.carryOutData(
+                self?.carryOutData(
                     Translate?.self,
                     data, response, error,
                     completionHandler: {(translate, errorCode) in

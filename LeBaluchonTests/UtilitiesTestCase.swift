@@ -18,4 +18,9 @@ class UtilitiesTestCase: XCTestCase {
         // Then
         XCTAssertNotNil(result)
     }
+    func testGivenAPINameWhenNameIsNotKnownThenReturnNil() {
+          let result = Utilities.getValueForAPIKey(named: "OpenClassRoom")
+          // Then
+          XCTAssertNil(result)
+      }
 }

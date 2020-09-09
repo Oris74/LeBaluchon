@@ -32,7 +32,7 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
         translationService.getTranslation(
             text: textToTranslate, source: source, target: target, callback: { (errorCode, translate) in
                 // Then
-               XCTAssertNotEqual(errorCode, Utilities.ManageError.none)
+                XCTAssertNotEqual(errorCode, nil)
                 XCTAssertNil(translate)
                 expectation.fulfill()
         })
@@ -113,7 +113,7 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
         translationService.getTranslation(
             text: textToTranslate, source: source, target: target, callback: { (errorCode, translate) in
                 // Then
-                XCTAssertEqual(errorCode, Utilities.ManageError.none)
+                XCTAssertEqual(errorCode, nil)
                 XCTAssertNotNil(translate)
 
                 XCTAssertNotNil(translate?.data.translations[0].translatedText)
@@ -121,6 +121,49 @@ La Grande Pyramide de Gizeh (également connue sous le nom de Pyramide de Khéop
                 expectation.fulfill()
         })
 
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetTranslationGivenWrongKeyApiPostFailedCallbackIfNoErrorAndCorrectData() {
+        // Given
+        let translationService = TranslationService(
+            translationSession: URLSessionFake(
+                data: FakeResponseData.translationCorrectData,
+                response: FakeResponseData.responseOK,
+                error: nil), apiKey: "OCC")
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        translationService.getTranslation(text: textToTranslate,
+                                          source: source,
+                                          target: target,
+                                          callback: { (errorCode, translate) in
+                                            // Then
+                                            XCTAssertEqual(errorCode, Utilities.ManageError.apiKeyError)
+                                            XCTAssertNil(translate)
+                                            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetTranslationShouldPostFailedCallbackIfTextToTranslateIsempty() {
+        // Given
+        let translationService = TranslationService(
+            translationSession: URLSessionFake(
+                data: FakeResponseData.translationCorrectData,
+                response: FakeResponseData.responseOK,
+                error: nil))
+
+        // When
+        let expectation = XCTestExpectation(
+            description: "Wait for queue change.")
+        translationService.getTranslation(
+            text: "", source: source, target: target, callback: { (errorCode, translate) in
+                // Then
+                XCTAssertEqual(errorCode, Utilities.ManageError.emptyText)
+                XCTAssertNil(translate)
+                expectation.fulfill()
+        })
         wait(for: [expectation], timeout: 0.01)
     }
 }

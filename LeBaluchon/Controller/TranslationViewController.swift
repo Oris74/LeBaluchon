@@ -50,13 +50,13 @@ class TranslationViewController: UIViewController, VCUtilities {
             text: sourceText.text,
             source: sourceLanguage,
             target: targetLanguage,
-            callback: { (errorCode, translation) in
+            callback: {[weak self] (errorCode, translation) in
 
-                if errorCode == .none, let translation = translation {
-                    self.update(translate: translation)
+                if errorCode == nil, let translation = translation {
+                    self?.update(translate: translation)
                 } else {
-                    self.toggleActivityIndicator(shown: false)
-                    self.manageErrors(errorCode: errorCode)
+                    self?.toggleActivityIndicator(shown: false)
+                    self?.manageErrors(errorCode: errorCode)
                 }
         })
     }
@@ -84,7 +84,7 @@ class TranslationViewController: UIViewController, VCUtilities {
 
     private func update(translate: Translate) {
         targetText.text = translate.data.translations[0].translatedText
-        self.toggleActivityIndicator(shown: false)
+        toggleActivityIndicator(shown: false)
     }
 
     private func toggleActivityIndicator(shown: Bool) {

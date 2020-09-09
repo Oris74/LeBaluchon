@@ -12,22 +12,25 @@ class ExchangeRatesService: NetworkServices {
 
     static let shared = ExchangeRatesService()
 
-    override init() {}
-
     private var task: URLSessionDataTask?
 
     private var session = URLSession(configuration: .default)
 
-    init(exchangeRateSession: URLSession) {
+    private var apiKey = "API_Fixer"
+
+    init(exchangeRateSession: URLSession = URLSession(configuration: .default),
+         apiKey: String = "API_Fixer") {
         self.session = exchangeRateSession
+        self.apiKey = apiKey
+        super.init()
     }
 
     private  let exchangeRateUrl =
         URL(string:
             "http://data.fixer.io/api/latest")!
 
-    func getExchangeRate(callback: @escaping (Utilities.ManageError, ExchangeRates?) -> Void) {
-        guard let keyFixer = Utilities.getValueForAPIKey(named: "API_Fixer") else {
+    func getExchangeRate(callback: @escaping (Utilities.ManageError?, ExchangeRates?) -> Void) {
+        guard let keyFixer = Utilities.getValueForAPIKey(named: apiKey) else {
             callback(Utilities.ManageError.apiKeyError, nil)
             return
         }
@@ -38,9 +41,9 @@ class ExchangeRatesService: NetworkServices {
 
         task?.cancel()
 
-        task = session.dataTask(with: request) { (data, response, error) in
+        task = session.dataTask(with: request) {[weak self] (data, response, error) in
             DispatchQueue.main.async {
-                self.carryOutData(
+                self?.carryOutData(
                     ExchangeRates?.self,
                     data, response, error,
                     completionHandler: {(exchangeRates, errorCode) in

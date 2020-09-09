@@ -15,11 +15,11 @@ class Utilities {
         case missingCoordinate = "Coordonnées GPS indisponibles"
         case keyboardError = "veuillez saisir des valeurs numériques"
         case incorrectDataStruct = "la structure n'est pas conforme aux données API"
-        case httpResponseError
+        case httpResponseError = "Réponse incorrect du serveur"
         case networkError = "Problème d'acces au site"
         case apiKeyError = "Clef API non recupéré"
-        case emptyValue = "veuillez saisir un texte à traduire"
-        case none
+        case emptyText = "veuillez saisir un texte à traduire"
+        case undefinedError = "erreur non definie"
     }
 
     static func getValueForAPIKey(named keyname: String) -> String? {

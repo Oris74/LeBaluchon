@@ -51,32 +51,32 @@ class WeatherViewController: UIViewController, VCUtilities {
             currentPlace = .coord(Coord(lon: location.longitude, lat: location.latitude))
         }
 
-        weather(place: vacationPlace, completionHandler: { weather in
-            self.updateVacationPlace(weather: weather)
+        weather(place: vacationPlace, completionHandler: {[weak self] weather in
+            self?.updateVacationPlace(weather: weather)
         })
 
-        weather(place: currentPlace, completionHandler: { weather in
+        weather(place: currentPlace, completionHandler: {[weak self] weather in
             do {
-                try self.updateCurrentPlace(weather: weather)
+                try self?.updateCurrentPlace(weather: weather)
 
             } catch let error as Utilities.ManageError {
-                self.manageErrors(errorCode: error)
+                self?.manageErrors(errorCode: error)
             } catch {
-                self.presentAlert(message: "oups erreur indéfinie!" )
+                self?.presentAlert(message: "oups erreur indéfinie!" )
             }
         })
     }
 
-    func weather(place: Location, completionHandler: @escaping (OpenWeather) -> Void) {
-        self.toggleActivityIndicator(shown: true, place: place)
+    func weather(place: Location, completionHandler: @escaping ( OpenWeather) -> Void) {
+        toggleActivityIndicator(shown: true, place: place)
 
-        WeatherService.shared.getWeather(place: place, callback: {(errorCode, weather) in
-            if errorCode == .none, let weather = weather {
+        WeatherService.shared.getWeather(place: place, callback: {[weak self] (errorCode, weather) in
+            if errorCode == nil, let weather = weather {
                 completionHandler(weather)
             } else {
-                self.manageErrors(errorCode: errorCode)
+                self?.manageErrors(errorCode: errorCode)
             }
-            self.toggleActivityIndicator(shown: false, place: place)
+            self?.toggleActivityIndicator(shown: false, place: place)
         })
     }
 

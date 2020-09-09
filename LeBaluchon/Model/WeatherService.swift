@@ -11,20 +11,23 @@ import Foundation
 class WeatherService: NetworkServices {
     static let shared = WeatherService()
 
-    override init() {}
-
     private var session = URLSession(configuration: .default)
 
     private var task: [Location: URLSessionDataTask?] = [:]
 
     private let openWeathermapUrl = URL(string: "http://api.openweathermap.org/data/2.5/weather")!
 
-    init(weatherSession: URLSession) {
+    private var apiKey = "API_OpenWeathermap"
+
+    init(weatherSession: URLSession = URLSession(configuration: .default),
+         apiKey: String = "API_OpenWeathermap" ) {
         self.session = weatherSession
+        self.apiKey = apiKey
+        super.init()
     }
 
-    func getWeather(place: Location, callback: @escaping (Utilities.ManageError, OpenWeather?) -> Void) {
-        guard let keyOpenWeathermap = Utilities.getValueForAPIKey(named: "API_OpenWeathermap")
+    func getWeather(place: Location, callback: @escaping (Utilities.ManageError?, OpenWeather?) -> Void) {
+        guard let keyOpenWeathermap = Utilities.getValueForAPIKey(named: apiKey )
         else {
             callback(Utilities.ManageError.apiKeyError, nil)
             return
@@ -37,9 +40,9 @@ class WeatherService: NetworkServices {
             currentTask?.cancel()
         }
 
-        task[place] = session.dataTask(with: request) { (data, response, error) in
+        task[place] = session.dataTask(with: request) { [weak self] (data, response, error) in
             DispatchQueue.main.async {
-                self.carryOutData(
+                self?.carryOutData(
                     OpenWeather?.self,
                     data, response, error,
                     completionHandler: {(weather, errorCode) in

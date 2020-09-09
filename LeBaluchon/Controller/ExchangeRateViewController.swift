@@ -38,7 +38,7 @@ class ExchangeRateViewController: UIViewController, VCUtilities {
         currentRate.text = String(exchangeRate.rates?.usd ?? 0.0)
         convertedAmount.text =  String(format: "%.2f", exchangeRate.euroToDollar ?? 0.0)
 
-        self.toggleActivityIndicator(shown: false)
+        toggleActivityIndicator(shown: false)
     }
 
     private func toggleActivityIndicator(shown: Bool) {
@@ -51,13 +51,13 @@ class ExchangeRateViewController: UIViewController, VCUtilities {
             throw Utilities.ManageError.keyboardError
         }
 
-        ExchangeRatesService.shared.getExchangeRate { (errorCode, exchangeRate) in
+        ExchangeRatesService.shared.getExchangeRate {[weak self] (errorCode, exchangeRate) in
             if errorCode == .none, var exchangeRate = exchangeRate {
                 exchangeRate.euroAmount = amount
-                self.update(exchangeRate: exchangeRate)
+                self?.update(exchangeRate: exchangeRate)
             } else {
-                self.toggleActivityIndicator(shown: false)
-                self.presentAlert(message: "récupération des données impossible")
+                self?.toggleActivityIndicator(shown: false)
+                self?.presentAlert(message: "récupération des données impossible")
             }
         }
     }

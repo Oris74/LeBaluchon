@@ -20,7 +20,7 @@ class NetworkServices {
     func checkURLResponse(_ data: Data?,
                           _ response: URLResponse?,
                           _ error: Error?,
-                          completionHandler: @escaping (Utilities.ManageError) -> Void) {
+                          completionHandler: @escaping (Utilities.ManageError?) -> Void) {
 
         guard data != nil, error == nil else {
             completionHandler(.networkError)
@@ -31,21 +31,21 @@ class NetworkServices {
             completionHandler(.httpResponseError)
             return
         }
-        completionHandler(.none)
+        completionHandler(nil)
         return
     }
 
     func decodeData<T: Decodable>(
         type: T?.Type,
         data: Data?,
-        completionHandler: @escaping (T?, Utilities.ManageError) -> Void) {
+        completionHandler: @escaping (T?, Utilities.ManageError?) -> Void) {
 
         guard let decodedData = try? JSONDecoder().decode(type.self, from: data!)
             else {
                 completionHandler(nil, .incorrectDataStruct)
                 return
         }
-        return completionHandler(decodedData, .none)
+        return completionHandler(decodedData, nil)
     }
 
     func carryOutData<T: Decodable>(
@@ -53,12 +53,12 @@ class NetworkServices {
         _ data: Data?,
         _ response: URLResponse?,
         _ error: Error?,
-        completionHandler: @escaping (T?, Utilities.ManageError) -> Void) {
-        self.checkURLResponse(data, response, error, completionHandler: { errorCode in
-            if errorCode == .none {
-                self.decodeData(type: type.self,
+        completionHandler: @escaping (T?, Utilities.ManageError?) -> Void) {
+        checkURLResponse(data, response, error, completionHandler: {[weak self] errorCode in
+            if errorCode == nil {
+                self?.decodeData(type: type.self,
                                 data: data,
-                                completionHandler: { (type, errorCode) in
+                                completionHandler: {(type, errorCode) in
                                     completionHandler(type, errorCode)
                 })
             } else {

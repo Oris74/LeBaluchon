@@ -17,8 +17,8 @@ struct ExchangeRates: Codable {
     let rates: Rates?
     var euroAmount: Double?
     var euroToDollar: Double? {
-        guard let rate = rates?.usd else { return nil }
-        guard let amount = euroAmount else { return nil }
+        let rate = rates?.usd ?? 0.0
+        let amount = euroAmount ?? 0.0
         return rate * amount
     }
 }

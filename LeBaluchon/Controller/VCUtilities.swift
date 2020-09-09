@@ -25,7 +25,11 @@ extension VCUtilities {
         view.endEditing(true)
     }
 
-    func manageErrors(errorCode: Utilities.ManageError) {
-        presentAlert(message: errorCode.rawValue)
+    func manageErrors(errorCode: Utilities.ManageError?) {
+        guard let error = errorCode else {
+            presentAlert(message: Utilities.ManageError.undefinedError.rawValue)
+            return
+        }
+        presentAlert(message: error.rawValue)
     }
 }
