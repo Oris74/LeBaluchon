@@ -62,7 +62,7 @@ class WeatherViewController: UIViewController, VCUtilities {
             } catch let error as Utilities.ManageError {
                 self?.manageErrors(errorCode: error)
             } catch {
-                self?.presentAlert(message: "oups erreur indéfinie!" )
+                self?.manageErrors(errorCode: Utilities.ManageError.undefinedError)
             }
         })
     }
@@ -80,8 +80,11 @@ class WeatherViewController: UIViewController, VCUtilities {
         })
     }
 
+    ///refresh the view with the  datas of New York
     private func updateVacationPlace(weather: OpenWeather) {
         let pictoCode = weather.weather[0].icon
+
+        //getting the right weather picto from openweather
         let urlPicto = URL(string: "http://openweathermap.org/img/wn/\(pictoCode)@2x.png")
         vacationPlaceWeatherPicto.load(url: urlPicto!)
 
@@ -95,6 +98,7 @@ class WeatherViewController: UIViewController, VCUtilities {
         vacationWeatherDescription.text = weather.weather[0].weatherDescription
     }
 
+    ///refresh the view with the  datas of the current location
     private func updateCurrentPlace(weather: OpenWeather) throws {
         guard case .coord(let coord) = currentPlace, coord.lat != 0.0 else {
             localCoordinate.text = "Longitude: ? / Latitude: ?"

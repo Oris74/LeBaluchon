@@ -8,6 +8,7 @@
 
 import Foundation
 
+///identification of the places to be used for weather module
 enum Location: Hashable {
     case town(TownName, CountryName)
     case coord(Coord)

@@ -33,6 +33,7 @@ class ExchangeRateViewController: UIViewController, VCUtilities {
         super.viewDidLoad()
     }
 
+    ///refresh the amount with the converted value
     private func update(exchangeRate: ExchangeRates) {
 
         currentRate.text = String(exchangeRate.rates?.usd ?? 0.0)
@@ -52,12 +53,12 @@ class ExchangeRateViewController: UIViewController, VCUtilities {
         }
 
         ExchangeRatesService.shared.getExchangeRate {[weak self] (errorCode, exchangeRate) in
-            if errorCode == .none, var exchangeRate = exchangeRate {
+            if errorCode == nil, var exchangeRate = exchangeRate {
                 exchangeRate.euroAmount = amount
                 self?.update(exchangeRate: exchangeRate)
             } else {
                 self?.toggleActivityIndicator(shown: false)
-                self?.presentAlert(message: "récupération des données impossible")
+                self?.manageErrors(errorCode: errorCode)
             }
         }
     }

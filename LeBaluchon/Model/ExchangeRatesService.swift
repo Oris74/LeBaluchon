@@ -29,7 +29,9 @@ class ExchangeRatesService: NetworkServices {
         URL(string:
             "http://data.fixer.io/api/latest")!
 
+    ///entry point for data importation  of exchange rate conversion module
     func getExchangeRate(callback: @escaping (Utilities.ManageError?, ExchangeRates?) -> Void) {
+
         guard let keyFixer = Utilities.getValueForAPIKey(named: apiKey) else {
             callback(Utilities.ManageError.apiKeyError, nil)
             return
@@ -39,6 +41,7 @@ class ExchangeRatesService: NetworkServices {
 
         let request = createRequest(url: exchangeRateUrl, queryItems: queryItems)
 
+        // prevent two identical tasks
         task?.cancel()
 
         task = session.dataTask(with: request) {[weak self] (data, response, error) in

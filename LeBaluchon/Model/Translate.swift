@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - Translate
+///API translation.googleapis.com Data Structure
 struct Translate: Codable {
     let data: DataStruct
 }

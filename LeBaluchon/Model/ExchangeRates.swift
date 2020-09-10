@@ -9,12 +9,14 @@
 import Foundation
 
 // MARK: - ExchangeRates
+///API Fixer.io Data Structure
 struct ExchangeRates: Codable {
 
     let success: Bool
     // let timestamp: Int
     let base, date: String
     let rates: Rates?
+
     var euroAmount: Double?
     var euroToDollar: Double? {
         let rate = rates?.usd ?? 0.0

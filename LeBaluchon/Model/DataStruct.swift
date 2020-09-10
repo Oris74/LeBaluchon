@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - DataStruct
+///part of Translate Data Structure
 struct DataStruct: Codable {
     let translations: [Translation]
 }

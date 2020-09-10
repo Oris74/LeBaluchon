@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - Translation
+/// part of Translate Data Structure
 struct Translation: Codable {
     let translatedText: String
 }

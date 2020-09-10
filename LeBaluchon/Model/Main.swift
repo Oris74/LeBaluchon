@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - Main
+///part of OpenWeather Data Structure
 struct Main: Codable {
     let temp: Double
     let feelsLike: Double

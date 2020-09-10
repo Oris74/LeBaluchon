@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - Sys
+///part of OpenWeather Data Structure
 struct Sys: Codable {
     let type, identifiant: Int
     let country: String

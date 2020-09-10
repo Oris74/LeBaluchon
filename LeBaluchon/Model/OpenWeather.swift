@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - Weather
+/// API openweathermap.org Data Structure
 struct OpenWeather: Codable {
     let coord: Coord
     let weather: [WeatherElement]

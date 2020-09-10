@@ -7,15 +7,15 @@
 //
 
 import Foundation
-
+///main functions for Weather Module
 class WeatherService: NetworkServices {
     static let shared = WeatherService()
+
+    private let openWeathermapUrl = URL(string: "http://api.openweathermap.org/data/2.5/weather")!
 
     private var session = URLSession(configuration: .default)
 
     private var task: [Location: URLSessionDataTask?] = [:]
-
-    private let openWeathermapUrl = URL(string: "http://api.openweathermap.org/data/2.5/weather")!
 
     private var apiKey = "API_OpenWeathermap"
 
@@ -26,17 +26,20 @@ class WeatherService: NetworkServices {
         super.init()
     }
 
+    ///Entry point for data importation  of weather module
     func getWeather(place: Location, callback: @escaping (Utilities.ManageError?, OpenWeather?) -> Void) {
+
         guard let keyOpenWeathermap = Utilities.getValueForAPIKey(named: apiKey )
-        else {
-            callback(Utilities.ManageError.apiKeyError, nil)
-            return
+            else {
+                callback(Utilities.ManageError.apiKeyError, nil)
+                return
         }
 
         let query = buildQueryItems(place: place, apiKey: keyOpenWeathermap)
         let request = createRequest(url: openWeathermapUrl, queryItems: query)
 
         if let currentTask = task[place] {
+            // prevent two identical tasks
             currentTask?.cancel()
         }
 
@@ -56,6 +59,7 @@ class WeatherService: NetworkServices {
         }
     }
 
+    /// adapt the query according to the type of localization ( town or coordonate )
     private func buildQueryItems(place: Location, apiKey: String) -> [URLQueryItem] {
 
         var query = [

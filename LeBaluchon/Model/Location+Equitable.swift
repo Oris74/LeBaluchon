@@ -8,6 +8,7 @@
 
 import Foundation
 
+///make enum Location equatable 
 extension Location: Equatable {
     static func == (lhs: Location, rhs: Location) -> Bool {
 

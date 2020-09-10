@@ -43,6 +43,7 @@
 		D93E251324F27055006A3884 /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93E251224F27055006A3884 /* Clouds.swift */; };
 		D93E251524F30267006A3884 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93E251424F30267006A3884 /* Location.swift */; };
 		D94DF0AA250937D50000AA75 /* ExchangeRatesCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DF0A9250937D50000AA75 /* ExchangeRatesCaseTest.swift */; };
+		D94DF0AC250A10350000AA75 /* LocationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DF0AB250A10350000AA75 /* LocationTestCase.swift */; };
 		D964A3CC24FAAD5A00998910 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D964A3CB24FAAD5A00998910 /* ApiKeys.plist */; };
 		D964A3D024FABBE100998910 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964A3CF24FABBE100998910 /* Utilities.swift */; };
 		D964A3D324FABF6D00998910 /* VCUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964A3D224FABF6D00998910 /* VCUtilities.swift */; };
@@ -109,6 +110,7 @@
 		D93E251224F27055006A3884 /* Clouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
 		D93E251424F30267006A3884 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		D94DF0A9250937D50000AA75 /* ExchangeRatesCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesCaseTest.swift; sourceTree = "<group>"; };
+		D94DF0AB250A10350000AA75 /* LocationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTestCase.swift; sourceTree = "<group>"; };
 		D964A3CB24FAAD5A00998910 /* ApiKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 		D964A3CF24FABBE100998910 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Utilities/Utilities.swift; sourceTree = "<group>"; };
 		D964A3D224FABF6D00998910 /* VCUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCUtilities.swift; sourceTree = "<group>"; };
@@ -298,8 +300,8 @@
 		D933B57624EE723D0088B13F /* TranslateTests */ = {
 			isa = PBXGroup;
 			children = (
-				D9110C1524F16BF2001FE28B /* TranslationServiceTestCase.swift */,
 				D933B55724EBBE280088B13F /* GoogleTranslate.json */,
+				D9110C1524F16BF2001FE28B /* TranslationServiceTestCase.swift */,
 			);
 			name = TranslateTests;
 			sourceTree = "<group>";
@@ -307,8 +309,9 @@
 		D933B57724EE72540088B13F /* WeatherTests */ = {
 			isa = PBXGroup;
 			children = (
-				D93E250224F19014006A3884 /* WeatherServiceTestCase.swift */,
 				D933B55924EBBE910088B13F /* OpenWeathermap.json */,
+				D93E250224F19014006A3884 /* WeatherServiceTestCase.swift */,
+				D94DF0AB250A10350000AA75 /* LocationTestCase.swift */,
 			);
 			name = WeatherTests;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				D9110C0824F16435001FE28B /* URLSessionFake.swift in Sources */,
 				D964A3D924FE536100998910 /* UtilitiesTestCase.swift in Sources */,
 				D9110C1624F16BF2001FE28B /* TranslationServiceTestCase.swift in Sources */,
+				D94DF0AC250A10350000AA75 /* LocationTestCase.swift in Sources */,
 				D964A3DD2502772500998910 /* NetworkServicesTestCase.swift in Sources */,
 				D93E250324F19014006A3884 /* WeatherServiceTestCase.swift in Sources */,
 				D9110C0A24F1646E001FE28B /* FakeResponseData.swift in Sources */,

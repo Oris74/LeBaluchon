@@ -8,8 +8,10 @@
 
 import Foundation
 
+///main functions for Translation Module
 class TranslationService: NetworkServices {
     static let shared = TranslationService()
+    private let googleTranslateUrl = URL(string: "https://translation.googleapis.com/language/translate/v2")
 
     private var task: URLSessionDataTask?
 
@@ -24,8 +26,7 @@ class TranslationService: NetworkServices {
         super.init()
     }
 
-    private  let googleTranslateUrl = URL(string: "https://translation.googleapis.com/language/translate/v2")
-
+    ///entry point for data importation  of translation module
     func getTranslation(
         text: String,
         source: String,
@@ -46,10 +47,12 @@ class TranslationService: NetworkServices {
 
         let request = createRequest(url: googleTranslateUrl!, methode: "POST", queryItems: queryItems)
 
+        // prevent two identical tasks
         task?.cancel()
 
         task = session.dataTask(with: request) {[weak self] (data, response, error) in
             DispatchQueue.main.async {
+
                 self?.carryOutData(
                     Translate?.self,
                     data, response, error,

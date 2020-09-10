@@ -61,6 +61,7 @@ class TranslationViewController: UIViewController, VCUtilities {
         })
     }
 
+    /// swap language to translate
     func switchLanguage() {
         switchText = !switchText
 
@@ -82,6 +83,7 @@ class TranslationViewController: UIViewController, VCUtilities {
         }
     }
 
+    ///refresh the translated text view
     private func update(translate: Translate) {
         targetText.text = translate.data.translations[0].translatedText
         toggleActivityIndicator(shown: false)

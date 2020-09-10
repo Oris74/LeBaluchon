@@ -8,12 +8,14 @@
 
 import UIKit
 
+/// Controlers Utilities
 protocol VCUtilities: UIViewController {
     func presentAlert(message: String)
 }
 
 extension VCUtilities {
 
+    /// getting popup alert with description errors
     internal func presentAlert(message: String) {
         let alert = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -30,6 +32,7 @@ extension VCUtilities {
             presentAlert(message: Utilities.ManageError.undefinedError.rawValue)
             return
         }
+        //popup display
         presentAlert(message: error.rawValue)
     }
 }

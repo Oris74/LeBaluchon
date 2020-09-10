@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - Coord
+///part of OpenWeather Data Structure
 struct Coord: Hashable, Codable {
     let lon, lat: Double
 }

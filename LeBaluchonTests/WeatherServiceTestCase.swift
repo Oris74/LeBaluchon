@@ -159,6 +159,7 @@ class WeatherServiceTestCase: XCTestCase {
             XCTAssertEqual(weather?.weather[0].icon, "04d" )
             expectation.fulfill()
         })
+         wait(for: [expectation], timeout: 0.01)
     }
 
     func testGetWeatherGivenWrongKeyApiPostFailedCallbackIfNoErrorAndCorrectData() {

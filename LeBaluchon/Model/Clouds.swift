@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - Clouds
+///part of OpenWeather Data Structure
 struct Clouds: Codable {
     let all: Int
 }

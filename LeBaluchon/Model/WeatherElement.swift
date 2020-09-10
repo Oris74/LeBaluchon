@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - WeatherElement
+///part of OpenWeather Data Structure
 struct WeatherElement: Codable {
     let identifiant: Int
     let main, weatherDescription, icon: String

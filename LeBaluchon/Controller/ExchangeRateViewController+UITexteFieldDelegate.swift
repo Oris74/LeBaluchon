@@ -22,7 +22,7 @@ extension ExchangeRateViewController: UITextFieldDelegate {
         do {
             try conversionValue(value: valueAmount)
         } catch let error as Utilities.ManageError {
-            presentAlert(message: error.rawValue)
+            manageErrors(errorCode: error)
         }
         return true
     }
