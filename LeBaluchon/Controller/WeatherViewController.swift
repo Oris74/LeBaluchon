@@ -39,16 +39,18 @@ class WeatherViewController: UIViewController, VCUtilities {
 
     override func viewDidLoad() {
         toggleActivityIndicator(shown: false)
-        checkLocationServices()
         vacationPlacePictoTemperature.image = UIImage(named: "Thermometer.png")
         localPlacePictoTemperature.image = UIImage(named: "Thermometer.png")
         super.viewDidLoad()
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        checkLocationServices()
         locationManager.startUpdatingLocation()
         if let location = locationManager.location?.coordinate {
             currentPlace = .coord(Coord(lon: location.longitude, lat: location.latitude))
+        } else {
+            manageErrors(errorCode: .missingCoordinate)
         }
 
         weather(place: vacationPlace, completionHandler: {[weak self] weather in
