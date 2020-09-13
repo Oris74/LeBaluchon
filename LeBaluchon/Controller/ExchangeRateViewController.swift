@@ -13,6 +13,7 @@ class ExchangeRateViewController: UIViewController, VCUtilities {
     @IBOutlet weak var currentAmount: UITextField!
     @IBOutlet weak var currentRate: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var button: UIButton!
 
     @IBAction func conversionButtonTapped(_ sender: UIButton) {
         guard let tappedValue = currentAmount.text else { return }
@@ -44,6 +45,7 @@ class ExchangeRateViewController: UIViewController, VCUtilities {
 
     private func toggleActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
+        button.isUserInteractionEnabled = !shown
     }
 
     internal func conversionValue(value: String) throws {

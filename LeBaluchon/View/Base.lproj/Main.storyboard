@@ -154,8 +154,10 @@
                         <outlet property="activityIndicator" destination="Gzo-u8-ct2" id="kRX-dz-a7h"/>
                         <outlet property="sourceFlag" destination="nu8-dA-DNx" id="xXY-VB-6FQ"/>
                         <outlet property="sourceText" destination="gMQ-HP-pYs" id="3F3-dM-8Zd"/>
+                        <outlet property="swapButton" destination="BEz-tx-4l4" id="sP5-RD-mK7"/>
                         <outlet property="targetFlag" destination="BpK-vf-UPl" id="PTc-hi-W1d"/>
                         <outlet property="targetText" destination="CPy-Fk-kdB" id="1V3-Jl-WR4"/>
+                        <outlet property="translationButton" destination="Xfd-QA-zJE" id="5Jv-9Z-I16"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Z2-pe-uSj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -307,6 +309,7 @@
                     <navigationItem key="navigationItem" title="Taux de Change" id="gYO-Kg-wsL"/>
                     <connections>
                         <outlet property="activityIndicator" destination="4hg-8S-1V1" id="nMl-0e-twM"/>
+                        <outlet property="button" destination="rs4-SE-d5E" id="o8e-fv-2Rj"/>
                         <outlet property="convertedAmount" destination="CLE-aN-c2L" id="XxJ-db-hUP"/>
                         <outlet property="currentAmount" destination="hRa-dv-BcT" id="aBD-Td-3ib"/>
                         <outlet property="currentRate" destination="1aP-U6-zEt" id="U8z-oT-yhQ"/>
@@ -328,7 +331,7 @@
                 <navigationController id="CS0-ea-Y0T" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Taux de Change" image="dollarsign.circle.fill" catalog="system" id="7z0-uk-AZV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="35f-iv-VAx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -356,7 +359,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2eq-n0-Wjt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1303" y="-375"/>
+            <point key="canvasLocation" x="-846" y="-375"/>
         </scene>
         <!--Météo-->
         <scene sceneID="VgJ-w6-8pg">
@@ -364,7 +367,7 @@
                 <navigationController id="h6b-9b-cXY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Météo" image="sun.max.fill" catalog="system" id="8QO-rX-vnB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WHN-Tp-FX8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -565,7 +568,7 @@
         <image name="Thermometer" width="50.5" height="186"/>
         <image name="UKFlag" width="39.5" height="27"/>
         <image name="arrow.up.and.down" catalog="system" width="107" height="128"/>
-        <image name="bubble.left.and.bubble.right" catalog="system" width="128" height="96"/>
+        <image name="bubble.left.and.bubble.right" catalog="system" width="32" height="32"/>
         <image name="dollar" width="736" height="414"/>
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
         <image name="sun.max.fill" catalog="system" width="128" height="124"/>

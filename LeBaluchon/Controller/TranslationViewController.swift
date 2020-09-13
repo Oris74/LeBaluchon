@@ -15,6 +15,9 @@ class TranslationViewController: UIViewController, VCUtilities {
     @IBOutlet weak var targetFlag: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    @IBOutlet weak var translationButton: UIButton!
+    @IBOutlet weak var swapButton: UIButton!
+
     var sourceLanguage: String
     var targetLanguage: String
     var switchText: Bool
@@ -91,5 +94,7 @@ class TranslationViewController: UIViewController, VCUtilities {
 
     private func toggleActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
+        swapButton.isUserInteractionEnabled = !shown
+        translationButton.isUserInteractionEnabled = !shown
     }
 }
