@@ -40,16 +40,39 @@ class NetworkServices {
     func decodeData<T: Decodable>(
         type: T?.Type,
         data: Data?,
-        completionHandler: @escaping (T?, Utilities.ManageError?) -> Void) {
-
-        guard let decodedData = try? JSONDecoder().decode(type.self, from: data!)
-            else {
-                completionHandler(nil, .incorrectDataStruct)
-                return
+        completionJSON: @escaping (T?, Utilities.ManageError?) -> Void) {
+        #if DEBUG
+        if let data = data {
+            do {
+                let decodedData =  try JSONDecoder().decode(type.self, from: data)
+                return completionJSON(decodedData, nil)
+            } catch let DecodingError.dataCorrupted(context) {
+                print(context)
+            } catch let DecodingError.keyNotFound(key, context) {
+                print("\nKey '\(key)' not found:", context.debugDescription)
+                print("\ncodingPath:", context.codingPath)
+            } catch let DecodingError.valueNotFound(value, context) {
+                print("\nValue '\(value)' not found:", context.debugDescription)
+                print("\ncodingPath:", context.codingPath)
+            } catch let DecodingError.typeMismatch(type, context) {
+                print("\nType '\(type)' mismatch:", context.debugDescription)
+                print("\ncodingPath:", context.codingPath)
+            } catch {
+                print("\nerror: ", error)
+            }
         }
-        return completionHandler(decodedData, nil)
+        #else
+        if let data = data {
+            do {
+                let decodedData =  try JSONDecoder().decode(type.self, from: data)
+                return completionJSON(decodedData, nil)
+            } catch {
+                return completionJSON(nil, Utilities.ManageError.decodableIssue)
+            }
+        }
+        #endif
+        return completionJSON(nil, Utilities.ManageError.incorrectDataStruct)
     }
-
     ///generic data importation management
     func carryOutData<T: Decodable>(
         _ type: T?.Type,
@@ -61,7 +84,7 @@ class NetworkServices {
             if errorCode == nil {
                 self?.decodeData(type: type.self,
                                  data: data,
-                                 completionHandler: {(type, errorCode) in
+                                 completionJSON: {(type, errorCode) in
                                     completionHandler(type, errorCode)
                 })
             } else {
